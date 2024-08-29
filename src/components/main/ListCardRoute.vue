@@ -7,30 +7,25 @@
       loop="true"
       @slideChange="onSlideChange"
     >
-      <SwiperSlide v-for="item in dataCards" :key="item.id">
-        <Card
-          tag="RouterLink"
-          :to="{ name: `${item.router}` }"
-          :is-router="true"
-          class="w-[40%] h-[450px] min-w-[450px] border border-green-400 rounded-md gap-[75px] px-[20px] py-[15px] hover:bg-green-400 duration-700 "
-        >
+      <SwiperSlide v-for="item in dataCards" :key="item.id" class="swiper--slide">
+        <Card tag="li" class="cart--li">
           <template #header>
-            <h2 class="title text-[45px] text-white uppercase">
+            <h2 class="title ">
               {{ item.name }}
             </h2>
           </template>
           <div class="body">
-            <p class="subtitle text-white text-[50px] uppercase">
+            <p class="subtitle ">
               {{ item.title }}
             </p>
           </div>
           <template #footer>
             <Button
               tag="RouterLink"
-              :to="{name:`${item.router}`}"
+              :to="{ name: `${item.router}` }"
               :is-icon-only="false"
               icon="arrow-right"
-              class="capitalize text-white"
+              class="btn--li"
             >
               go to page
             </Button>
@@ -82,3 +77,32 @@ const dataCards = [
   }
 ]
 </script>
+
+<style scoped>
+.swiper--slide {
+  @apply w-[40%]  min-w-[450px] 
+  border border-blue-700 rounded-md  
+  px-[20px] py-[15px]  hover:bg-blue-700
+    duration-500 overflow-hidden duration-700 transition-all hover:shadow-sm hover:shadow-blue-600;
+}
+
+.cart--li {
+  @apply h-full gap-[75px] justify-between
+}
+
+.title {
+  @apply text-[45px] text-white uppercase
+}
+
+.subtitle {
+  @apply text-white text-[35px] lg:text-[45px] uppercase
+}
+
+.btn--li {
+  @apply capitalize text-white transition-all duration-1000
+}
+
+.swiper--slide:hover .btn--li {
+  @apply scale-x-100 justify-between  translate-x-[160px]  
+}
+</style>

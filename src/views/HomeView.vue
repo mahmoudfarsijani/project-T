@@ -22,6 +22,6 @@ import ListCardRoute from '@/components/main/ListCardRoute.vue'
 }
 
 .subtitle {
-  @apply text-white text-[35px] capitalize;
+  @apply text-white text-[25px] capitalize;
 }
 </style>
