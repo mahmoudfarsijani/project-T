@@ -111,7 +111,7 @@ onUnmounted(() => {
   @apply w-[40%]  min-w-[450px] 
   border border-blue-700 rounded-md  
   px-[20px] py-[15px]  hover:bg-blue-700
-  overflow-hidden duration-700 transition-all hover:shadow-sm hover:shadow-blue-600 ;
+  overflow-hidden duration-700 transition-all hover:shadow-sm hover:shadow-blue-600 dark:border-blue-400 ;
 }
 
 .swiper--slide:hover {
