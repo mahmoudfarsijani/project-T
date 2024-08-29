@@ -1,7 +1,7 @@
 <template>
   <Row tag="ul" :is-no-wrap="true" class="w-full">
     <swiper
-      :slides-per-view="3"
+      :slides-per-view="isMobile ? 1 : 3"
       :space-between="40"
       @swiper="onSwiper"
       loop="true"
@@ -26,6 +26,7 @@
               :is-icon-only="false"
               icon="arrow-right"
               class="btn--li"
+              :class="{'btn--li-mobile':isMobile}"
             >
               go to page
             </Button>
@@ -37,12 +38,24 @@
 </template>
 
 <script setup>
+
+
+import { ref,onMounted,onUnmounted } from 'vue'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { nanoid } from 'nanoid'
+import { useEventListener } from '@vueuse/core'
+
+
 import Row from '@/components/base/Row.vue'
 import Card from '@/components/base/Card.vue'
 import Button from '@/components/base/Button.vue'
-import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
-import { nanoid } from 'nanoid'
+
+
+ 
+
+// variable 
+const isMobile = ref(false);
 
 const dataCards = [
   {
@@ -75,7 +88,22 @@ const dataCards = [
     title: 'Enter your dashboard',
     router: 'auth'
   }
-]
+];
+
+
+
+const changeValue = () => {
+  isMobile.value = window.innerWidth < '800';
+}
+
+onMounted(() => {
+  changeValue()
+  useEventListener(window,'resize',changeValue)
+})
+
+onUnmounted(() => {
+  useEventListener(window,'resize',changeValue)
+})
 </script>
 
 <style scoped>
@@ -83,7 +111,7 @@ const dataCards = [
   @apply w-[40%]  min-w-[450px] 
   border border-blue-700 rounded-md  
   px-[20px] py-[15px]  hover:bg-blue-700
-    duration-500 overflow-hidden duration-700 transition-all hover:shadow-sm hover:shadow-blue-600;
+  overflow-hidden duration-700 transition-all hover:shadow-sm hover:shadow-blue-600;
 }
 
 .cart--li {
@@ -91,18 +119,26 @@ const dataCards = [
 }
 
 .title {
-  @apply text-[45px] text-white uppercase
+  @apply text-[45px] text-white uppercase font-Archivo duration-700
 }
 
 .subtitle {
-  @apply text-white text-[35px] lg:text-[45px] uppercase
+  @apply text-white text-[35px] lg:text-[40px] uppercase font-suns font-medium
 }
 
-.btn--li {
+.btn--li,.btn--li-mobile {
   @apply capitalize text-white transition-all duration-1000
 }
 
 .swiper--slide:hover .btn--li {
   @apply scale-x-100 justify-between  translate-x-[160px]  
+}
+
+.swiper--slide:hover .btn--li-mobile {
+  @apply scale-x-100 justify-between  translate-x-[30px] 
+}
+
+.swiper--slide:hover .title {
+  @apply text-black
 }
 </style>

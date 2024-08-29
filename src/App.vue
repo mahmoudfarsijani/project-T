@@ -1,5 +1,6 @@
 <template>
   <Wrapper>
+    <RouterView name="headerStore"/>
     <RouterView/>
   </Wrapper>
 </template>

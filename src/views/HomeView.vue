@@ -8,7 +8,7 @@ import ListCardRoute from '@/components/main/ListCardRoute.vue'
   <Main class="flex flex-col justify-center gap-[45px]">
     <Container tag="section">
       <div>
-        <h1 class="title">Links for you</h1>
+        <h1 class="title font-Matemasie">-Links for you-</h1>
         <p class="subtitle">you can click each link and go to website.</p>
       </div>
     </Container>

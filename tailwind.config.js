@@ -22,6 +22,12 @@ export default {
   
         '2xl': '1536px',
         // => @media (min-width: 1536px) { ... }
+      },
+      fontFamily: {
+        suns: ['SUSE','sans-serif'],
+        kanit: ['Kanit','sans-serif'],
+        Matemasie: ['Matemasie','sans-serif'],
+        Archivo: ['Archivo Black','sans-serif']
       }
     }
   },
