@@ -5,7 +5,7 @@ main {
 }
 
 .wrapper {
-  @apply w-full min-h-screen bg-gray-950
+  @apply w-full min-h-screen bg-gray-950 dark:bg-gray-200
 }
 
 /* #app {

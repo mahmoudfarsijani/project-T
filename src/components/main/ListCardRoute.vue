@@ -15,7 +15,7 @@
             </h2>
           </template>
           <div class="body">
-            <p class="subtitle ">
+            <p class="subtitle">
               {{ item.title }}
             </p>
           </div>
@@ -111,7 +111,11 @@ onUnmounted(() => {
   @apply w-[40%]  min-w-[450px] 
   border border-blue-700 rounded-md  
   px-[20px] py-[15px]  hover:bg-blue-700
-  overflow-hidden duration-700 transition-all hover:shadow-sm hover:shadow-blue-600;
+  overflow-hidden duration-700 transition-all hover:shadow-sm hover:shadow-blue-600 ;
+}
+
+.swiper--slide:hover {
+  @apply dark:bg-blue-400
 }
 
 .cart--li {
@@ -119,26 +123,27 @@ onUnmounted(() => {
 }
 
 .title {
-  @apply text-[45px] text-white uppercase font-Archivo duration-700
+  @apply text-[45px] text-white uppercase font-Archivo  duration-700 dark:text-gray-900
 }
 
 .subtitle {
-  @apply text-white text-[35px] lg:text-[40px] uppercase font-suns font-medium
+  @apply text-white dark:text-gray-900 text-[35px] lg:text-[40px] uppercase font-suns font-medium
 }
 
 .btn--li,.btn--li-mobile {
-  @apply capitalize text-white transition-all duration-1000
+  @apply capitalize text-white dark:text-gray-900 transition-all duration-1000  w-[25%] font-suns
 }
 
 .swiper--slide:hover .btn--li {
-  @apply scale-x-100 justify-between  translate-x-[160px]  
+  @apply scale-x-100   translate-x-[160px]   
 }
 
 .swiper--slide:hover .btn--li-mobile {
-  @apply scale-x-100 justify-between  translate-x-[30px] 
+  @apply scale-x-100   translate-x-[30px] 
 }
 
 .swiper--slide:hover .title {
-  @apply text-black
+  @apply text-black dark:text-white
 }
+
 </style>
