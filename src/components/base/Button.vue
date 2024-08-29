@@ -15,7 +15,7 @@ import { string, oneOf, bool } from 'vue-types'
 
 import Icon from '@/components/base/Icon.vue'
 
-defineProps({
+const props =  defineProps({
   tag: oneOf(['button', 'a', 'RouterLink', 'span']).def('button'),
   isIconOnly: bool().def(false),
   icon: string(),
