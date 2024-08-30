@@ -1,24 +1,24 @@
 <template>
-  <header class="w-full flex flex-col ">
+  <header class="w-full flex flex-col border-b-2 border-black">
     <!-- top -->
-    <div class="header-top w-full flex flex-nowrap justify-between bg-slate-900 items-center py-[20px] px-[20px]">
-      <RouterLink :to="{name:'home'}" class="font-Archivo text-[25px] uppercase text-white"> red store </RouterLink>
+    <div class="header-top w-full flex flex-nowrap justify-between  items-center py-[20px] px-[20px]">
+      <RouterLink :to="{name:'home'}" class="font-Archivo text-[25px] uppercase text-white dark:text-black"> red store </RouterLink>
       <div class="flex-1 flex justify-center">
         <input type="text" class="px-[10px] py-[8px] w-[45%]"/>
       </div>
       <div class="flex flex-col items-start">
-        <span class="text-white capitalize">customer service</span>
-        <a href="tel:0020229823" class="text-white">+989123569847</a>
+        <span class="text-white capitalize font-kanit dark:text-black">customer service</span>
+        <a href="tel:0020229823" class="text-white font-kanit dark:text-black">+989123569847</a>
       </div>
     </div>
     <!-- bottom -->
-    <nav class=" bg-gray-400 w-full flex flex-nowrap justify-between py-[10px] px-[20px]">
+    <nav class=" w-full flex flex-nowrap justify-between py-[10px] px-[20px]">
       <div class="">
-        <Button :is-icon-only="false" icon="arrow-bottom" class="capitalize text-white"> categories </Button>
+        <Button :is-icon-only="false" icon="arrow-bottom" class="capitalize text-white dark:text-black"> categories </Button>
       </div>
       <ul class="flex flex-nowrap flex-1 justify-center gap-[20px]">
         <li v-for="item in routeNames" :key="item.id">
-          <RouterLink :to="`${item.route}`" class="capitalize text-white nav-item">
+          <RouterLink :to="`${item.route}`" class="capitalize text-black nav-item font-kanit ">
             {{ item.name }}
           </RouterLink>
         </li>
@@ -65,10 +65,10 @@ const routeNames = [
 
 <style scoped>
   .nav-item {
-    @apply text-white
+    @apply text-white hover:text-orange-500 dark:text-black
   }
 
   .nav-item.active-nav {
-    @apply text-red-700
+    @apply text-yellow-500
   }
 </style>

@@ -9,13 +9,14 @@ const router = createRouter({
       path: '/',
       name: 'home',
       alias: '/home',
-      component: () => import('@/views/HomeView.vue')
+      component: () => import('@/views/HomeView.vue'),
+      meta: { title: 'Home', requiresAuth: false }
     },
     {
       path: '/store',
       name: 'store',
       alias: '/stores',
-      redirect:'/store/home',
+      redirect: '/store/home',
       components: {
         default: () => import('@/views/store/Store.vue'),
         headerStore: () => import('@/components/main/StoreHeader.vue')
@@ -24,30 +25,30 @@ const router = createRouter({
       children: [
         // پیش فرض
         {
-          path:'',
-          name:'home-store',
+          path: '',
+          name: 'home-store',
           component: () => import('@/views/store/child/HomeStore.vue')
         },
         {
-          path:'/store/home',
-          name:'home-store',
+          path: '/store/home',
+          name: 'home-store',
           component: () => import('@/views/store/child/HomeStore.vue')
         },
         {
-          name:'shop-store',
-          path:'/store/shop',
+          name: 'shop-store',
+          path: '/store/shop',
           component: () => import('@/views/store/child/ShopStore.vue')
         },
         {
-          name:'detail-shop-store',
-          path:'/store/detail-shop',
+          name: 'detail-shop-store',
+          path: '/store/detail-shop',
           component: () => import('@/views/store/child/DetailShopStore.vue')
         },
         {
-          name:'contact-store',
-          path:'/store/contact',
+          name: 'contact-store',
+          path: '/store/contact',
           component: () => import('@/views/store/child/ContactStore.vue')
-        },
+        }
       ]
     },
     {
@@ -77,6 +78,11 @@ const router = createRouter({
       alias: '/movies',
       component: () => import('@/views/movie/Movie.vue'),
       meta: { title: 'Movie', requiresAuth: false }
+    },
+    {
+      name: '404',
+      path: '/:pathMatch(.*)*',
+      component: () => import('@/views/404.vue')
     }
   ],
   // link active class
