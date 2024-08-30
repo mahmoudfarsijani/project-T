@@ -11,6 +11,9 @@ import VLazyImage from 'v-lazy-image';
 
 const app = createApp(App)
 
+// custome hook directive
+
+
 
 // use and mount and component and custome directive
 

@@ -1,7 +1,7 @@
 <template>
   <Wrapper>
     <RouterView name="headerStore"/>
-    <RouterView/>
+    <RouterView :key="$route.path"/>
   </Wrapper>
 </template>
 

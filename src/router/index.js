@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
+  //  history
   history: createWebHistory(import.meta.env.BASE_URL),
+  // routes
   routes: [
     {
       path: '/',
@@ -13,11 +15,40 @@ const router = createRouter({
       path: '/store',
       name: 'store',
       alias: '/stores',
+      redirect:'/store/home',
       components: {
         default: () => import('@/views/store/Store.vue'),
-        headerStore: () => import('@/components/main/Header.vue')
+        headerStore: () => import('@/components/main/StoreHeader.vue')
       },
-      meta: { title: 'Store Market', requiresAuth: false }
+      meta: { title: 'Store Market', requiresAuth: false },
+      children: [
+        // پیش فرض
+        {
+          path:'',
+          name:'home-store',
+          component: () => import('@/views/store/child/HomeStore.vue')
+        },
+        {
+          path:'/store/home',
+          name:'home-store',
+          component: () => import('@/views/store/child/HomeStore.vue')
+        },
+        {
+          name:'shop-store',
+          path:'/store/shop',
+          component: () => import('@/views/store/child/ShopStore.vue')
+        },
+        {
+          name:'detail-shop-store',
+          path:'/store/detail-shop',
+          component: () => import('@/views/store/child/DetailShopStore.vue')
+        },
+        {
+          name:'contact-store',
+          path:'/store/contact',
+          component: () => import('@/views/store/child/ContactStore.vue')
+        },
+      ]
     },
     {
       path: '/weather',
@@ -48,6 +79,8 @@ const router = createRouter({
       meta: { title: 'Movie', requiresAuth: false }
     }
   ],
+  // link active class
+  linkActiveClass: 'active-nav',
 
   // scroll behavior
   scrollBehavior(to, from, savedPosition) {
@@ -66,7 +99,6 @@ router.beforeEach((to, from, next) => {
   if (to.meta.title) {
     document.title = to.meta.title
   }
-
   next()
 })
 

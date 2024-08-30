@@ -91,17 +91,17 @@ const dataCards = [
 ];
 
 
-
+//  custome hook directive
 const changeValue = () => {
   isMobile.value = window.innerWidth < '800';
 }
-
 onMounted(() => {
   changeValue()
   useEventListener(window,'resize',changeValue)
 })
-
 onUnmounted(() => {
+  useEventListener(window,'resize',changeValue)
+  delete 
   useEventListener(window,'resize',changeValue)
 })
 </script>

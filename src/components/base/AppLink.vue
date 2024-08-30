@@ -2,7 +2,7 @@
   <a v-if="externalLink" :href="to">
     <slot />
   </a>
-  <RouterLink v-else v-bind="$props">
+  <RouterLink v-else :to="to" v-bind="props">
     <slot />
   </RouterLink>
 </template>
@@ -11,7 +11,7 @@
 import { defineProps } from 'vue'
 import { RouterLink } from 'vue-router'
 
-defineProps({
+const props = defineProps({
   ...RouterLink
 })
 
