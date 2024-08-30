@@ -13,7 +13,13 @@ const app = createApp(App)
 
 // custome hook directive
 
+// const changeWidth = {
+//     mounted(el,binding) {
+//         const resizeHandler = () => {
 
+//         }
+//     }
+// }
 
 // use and mount and component and custome directive
 

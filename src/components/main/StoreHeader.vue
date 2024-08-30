@@ -1,5 +1,5 @@
 <template>
-  <header class="w-full flex flex-col border-b-2 border-black">
+  <header class="w-full flex flex-col border-b-2 border-blue-500 pb-[10px]">
     <!-- top -->
     <div class="header-top w-full flex flex-nowrap justify-between  items-center py-[20px] px-[20px]">
       <RouterLink :to="{name:'home'}" class="font-Archivo text-[25px] uppercase text-white dark:text-black"> red store </RouterLink>
