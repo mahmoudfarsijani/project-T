@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="h-[3000px]">
     <RouterView />
   </div>
 </template>
