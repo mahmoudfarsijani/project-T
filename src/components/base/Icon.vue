@@ -17,22 +17,22 @@
   <!-- close -->
   <g v-else-if="name === 'close'">
     <svg
-      width="800px"
-      height="800px"
+      width="20px"
+      height="20px"
       viewBox="-0.5 0 25 25"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
         d="M3 21.32L21 3.32001"
-        stroke="#000000"
+        :stroke="iconStroke"
         stroke-width="1.5"
         stroke-linecap="round"
         stroke-linejoin="round"
       />
       <path
         d="M3 3.32001L21 21.32"
-        stroke="#000000"
+        :stroke="iconStroke"
         stroke-width="1.5"
         stroke-linecap="round"
         stroke-linejoin="round"
@@ -46,7 +46,7 @@
       height="800px"
       viewBox="0 -0.5 25 25"
       fill="none"
-    xmlns="http://www.w3.org/2000/svg"
+      xmlns="http://www.w3.org/2000/svg"
     ></svg>
   </g>
   <!-- arrow bottom -->
@@ -722,18 +722,104 @@
   <!-- hamburger -->
   <g v-else-if="name === 'hamburger'">
     <svg
-      width="800px"
-      height="800px"
-      viewBox="0 0 24 24"
-      fill="none"
+      :fill="iconStroke"
+      width="25px"
+      height="25px"
+      viewBox="0 0 64 64"
+      version="1.1"
       xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xml:space="preserve"
+      xmlns:serif="http://www.serif.com/"
+      style="fill-rule: evenodd; clip-rule: evenodd; stroke-linejoin: round; stroke-miterlimit: 2"
     >
-      <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-        d="M4 5C3.44772 5 3 5.44772 3 6C3 6.55228 3.44772 7 4 7H20C20.5523 7 21 6.55228 21 6C21 5.44772 20.5523 5 20 5H4ZM7 12C7 11.4477 7.44772 11 8 11H20C20.5523 11 21 11.4477 21 12C21 12.5523 20.5523 13 20 13H8C7.44772 13 7 12.5523 7 12ZM13 18C13 17.4477 13.4477 17 14 17H20C20.5523 17 21 17.4477 21 18C21 18.5523 20.5523 19 20 19H14C13.4477 19 13 18.5523 13 18Z"
-        fill="#000000"
-      />
+      <g transform="matrix(1,0,0,1,-1088,-192)">
+        <rect id="Icons" x="0" y="0" width="1280" height="800" style="fill: none" />
+        <g id="Icons1" serif:id="Icons">
+          <g id="Strike"></g>
+          <g id="H1"></g>
+          <g id="H2"></g>
+          <g id="H3"></g>
+          <g id="list-ul"></g>
+          <g id="hamburger-1"></g>
+          <g id="hamburger-2" transform="matrix(1.50868,0,0,1.01217,70.647,191.772)">
+            <g transform="matrix(0.149202,0,0,0.173437,664.206,42.142)">
+              <rect
+                x="103.288"
+                y="8.535"
+                width="71.218"
+                height="34.133"
+                style="fill-rule: nonzero"
+              />
+            </g>
+            <g transform="matrix(0.149202,0,0,0.173437,664.345,27.4)">
+              <rect
+                x="103.288"
+                y="8.535"
+                width="141.366"
+                height="34.133"
+                style="fill-rule: nonzero"
+              />
+            </g>
+            <g transform="matrix(0.149202,0,0,0.173437,664.345,12.658)">
+              <rect
+                x="103.288"
+                y="8.535"
+                width="212.447"
+                height="34.133"
+                style="fill-rule: nonzero"
+              />
+            </g>
+          </g>
+          <g id="list-ol"></g>
+          <g id="list-task"></g>
+          <g id="trash"></g>
+          <g id="vertical-menu"></g>
+          <g id="horizontal-menu"></g>
+          <g id="sidebar-2"></g>
+          <g id="Pen"></g>
+          <g id="Pen1" serif:id="Pen"></g>
+          <g id="clock"></g>
+          <g id="external-link"></g>
+          <g id="hr"></g>
+          <g id="info"></g>
+          <g id="warning"></g>
+          <g id="plus-circle"></g>
+          <g id="minus-circle"></g>
+          <g id="vue"></g>
+          <g id="cog"></g>
+          <g id="logo"></g>
+          <g id="radio-check"></g>
+          <g id="eye-slash"></g>
+          <g id="eye"></g>
+          <g id="toggle-off"></g>
+          <g id="shredder"></g>
+          <g id="spinner--loading--dots-" serif:id="spinner [loading, dots]"></g>
+          <g id="react"></g>
+          <g id="check-selected"></g>
+          <g id="turn-off"></g>
+          <g id="code-block"></g>
+          <g id="user"></g>
+          <g id="coffee-bean"></g>
+          <g transform="matrix(0.638317,0.368532,-0.368532,0.638317,785.021,-208.975)">
+            <g id="coffee-beans">
+              <g id="coffee-bean1" serif:id="coffee-bean"></g>
+            </g>
+          </g>
+          <g id="coffee-bean-filled"></g>
+          <g transform="matrix(0.638317,0.368532,-0.368532,0.638317,913.062,-208.975)">
+            <g id="coffee-beans-filled">
+              <g id="coffee-bean2" serif:id="coffee-bean"></g>
+            </g>
+          </g>
+          <g id="clipboard"></g>
+          <g transform="matrix(1,0,0,1,128.011,1.35415)">
+            <g id="clipboard-paste"></g>
+          </g>
+          <g id="clipboard-copy"></g>
+          <g id="Layer1"></g>
+        </g>
+      </g>
     </svg>
   </g>
   <!-- moon -->
@@ -828,11 +914,9 @@
 </template>
 
 <script setup>
-import { defineProps,computed} from 'vue'
+import { defineProps, computed } from 'vue'
 import { string } from 'vue-types'
-import {useDark} from '@vueuse/core'
-
-
+import { useDark } from '@vueuse/core'
 
 const isDark = useDark()
 
@@ -840,6 +924,5 @@ defineProps({
   name: string()
 })
 
-const iconStroke = computed(() =>  (isDark.value ? '#000' : '#fff'))
-
+const iconStroke = computed(() => (isDark.value ? '#000' : '#fff'))
 </script>

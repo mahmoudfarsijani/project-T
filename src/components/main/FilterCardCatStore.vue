@@ -2,8 +2,11 @@
   <Card :is-row="false" tag="div" class="card-drop">
     <div class="relative w-full">
       <Button
+      tag="button"
         :is-icon-only="false"
         icon="arrow-bottom"
+        :is-rounded-sm="true"
+        :is-primary="true"
         class="btn-dropdown"
         @click="showDropdown"
       >
@@ -161,11 +164,11 @@ const showDropdown = () => {
 
 <style scoped>
 .card-drop {
-    @apply relative w-full
+    @apply relative w-full 
 }
 .btn-dropdown {
     @apply capitalize text-white dark:text-black 
-    w-full px-[10px]  gap-[10px] py-[10px] justify-between
+    w-full px-[10px]  gap-[10px] py-[10px] justify-between 
 }
 .list-cat {
     @apply  absolute bg-white  py-[10px] top-[55px]
