@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+  <header class="header" :class="{'scroll-show':isScroll}">
     <!-- top -->
     <div class="header-top w-full">
       <div class="box-logos" :class="{ 'w-full': isMobile }">
@@ -91,10 +91,27 @@ const routeNames = [
 // variables
 const isMobile = ref(false)
 const isShowMenu = ref(false)
+const isScroll = ref(false)
 
 const resizeHandler = () => {
   isMobile.value = window.innerWidth < '760'
 }
+const scrollHandler = () => {
+  if(document.documentElement.scrollTop > 2){
+   return isScroll.value = true
+  } 
+   return isScroll.value = false
+}
+
+onMounted(() => {
+  scrollHandler(),
+  useEventListener(window,'scroll',scrollHandler)
+})
+onUnmounted(() => {
+  useEventListener(window,'scroll',scrollHandler)
+  delete
+  useEventListener(window,'scroll',scrollHandler)
+})
 onMounted(() => {
   resizeHandler()
   useEventListener(window, 'resize', resizeHandler)
@@ -108,7 +125,10 @@ onUnmounted(() => {
 
 <style scoped>
 .header {
-  @apply w-full flex flex-col relative;
+  @apply w-full flex flex-col relative transition-all duration-700;
+}
+.scroll-show {
+  @apply fixed top-0 backdrop-blur-sm bg-white/30
 }
 .box-logos {
   @apply flex gap-[10px] flex-nowrap items-center justify-between;
@@ -159,7 +179,7 @@ onUnmounted(() => {
 }
 .nav-mobile {
   @apply h-screen bg-gray-800 absolute top-0 right-0 left-0 w-0 
-     overflow-hidden duration-700 ;
+     overflow-hidden duration-700 dark:bg-gray-200 ;
 }
 .show-menu-mobile {
   @apply w-screen origin-left  ;
@@ -172,4 +192,6 @@ onUnmounted(() => {
 .box-list-mobile {
   @apply w-full h-full flex flex-col gap-[50px] px-[20px] py-[25px]
 }
+
+
 </style>
