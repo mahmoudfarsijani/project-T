@@ -44,7 +44,7 @@ const elementClass = computed(() => ({
 }
 
 .button--simple {
-    @apply items-center
+    @apply items-center px-[10px] py-[7px]
 }
 
 .but--primary {

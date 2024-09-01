@@ -1,5 +1,9 @@
 <template>
-    <div>
+    <Main class="pt-[200px]">
         shop store
-    </div>
+    </Main>
 </template>
+
+<script setup>
+ import Main from '@/components/base/Main.vue';
+</script>

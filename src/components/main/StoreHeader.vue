@@ -1,56 +1,67 @@
 <template>
-  <header class="header" :class="{'scroll-show':isScroll}">
-    <!-- top -->
-    <div class="header-top w-full">
-      <div class="box-logos" :class="{ 'w-full': isMobile }">
-        <Button
-          v-if="isMobile"
-          :is-icon-only="true"
-          icon="hamburger"
-          @click="isShowMenu = !isShowMenu"
-        />
-        <RouterLink :to="{ name: 'home' }" class="logo"> red store </RouterLink>
-      </div>
-      <div v-if="!isMobile" class="box-search">
-        <input type="text" class="input-search" placeholder="Search" />
-        <Button :is-icon-only="true" icon="search" class="bt-search" />
-      </div>
-      <div v-if="!isMobile" class="box-servise">
-        <span class="title-service">customer service</span>
-        <a href="tel:0020229823" class="number-service">+989123569847</a>
-      </div>
-    </div>
-    <!-- bottom -->
-    <nav class="nav">
-      <div>
-        <FilterCardCatStore class="w-full" />
-      </div>
-      <!-- desktop -->
-      <ul v-if="!isMobile" class="list-routes">
-        <li v-for="item in routeNames" :key="item.id">
-          <RouterLink :to="`${item.route}`" class="item-list">
-            {{ item.name }}
-          </RouterLink>
-        </li>
-      </ul>
-      <!-- mobile -->
-      <div v-else class="nav-mobile" :class="{ 'show-menu-mobile': isShowMenu }">
-        <div class="box-list-mobile">
-          <Button :is-icon-only="true" icon="close" @click="isShowMenu = !isShowMenu" class="self-start"/>
-          <ul class="list-mobile">
-            <li v-for="item in routeNames" :key="item.id">
-              <RouterLink :to="`${item.route}`" class="item-list" @click="isShowMenu = !isShowMenu">
-                {{ item.name }}
-              </RouterLink>
-            </li>
-          </ul>
+  <header class="header" :class="{ 'scroll-show': isScroll }">
+    <Container>
+      <!-- top -->
+      <div class="header-top w-full">
+        <div class="box-logos" :class="{ 'w-full': isMobile }">
+          <Button
+            v-if="isMobile"
+            :is-icon-only="true"
+            icon="hamburger"
+            @click="isShowMenu = !isShowMenu"
+          />
+          <RouterLink :to="{ name: 'home' }" class="logo"> red store </RouterLink>
+        </div>
+        <div v-if="!isMobile" class="box-search">
+          <input type="text" class="input-search" placeholder="Search" />
+          <Button :is-icon-only="true" icon="search" class="bt-search" />
+        </div>
+        <div v-if="!isMobile" class="box-servise">
+          <span class="title-service">customer service</span>
+          <a href="tel:0020229823" class="number-service">+989123569847</a>
         </div>
       </div>
-      <div class="box-btn">
-        <Button :is-icon-only="true" icon="fill-heart" />
-        <Button :is-icon-only="true" icon="basket" />
-      </div>
-    </nav>
+      <!-- bottom -->
+      <nav class="nav">
+        <div>
+          <FilterCardCatStore class="w-full" />
+        </div>
+        <!-- desktop -->
+        <ul v-if="!isMobile" class="list-routes">
+          <li v-for="item in routeNames" :key="item.id">
+            <RouterLink :to="`${item.route}`" class="item-list">
+              {{ item.name }}
+            </RouterLink>
+          </li>
+        </ul>
+        <!-- mobile -->
+        <div v-else class="nav-mobile" :class="{ 'show-menu-mobile': isShowMenu }">
+          <div class="box-list-mobile">
+            <Button
+              :is-icon-only="true"
+              icon="close"
+              @click="isShowMenu = !isShowMenu"
+              class="self-start"
+            />
+            <ul class="list-mobile">
+              <li v-for="item in routeNames" :key="item.id">
+                <RouterLink
+                  :to="`${item.route}`"
+                  class="item-list"
+                  @click="isShowMenu = !isShowMenu"
+                >
+                  {{ item.name }}
+                </RouterLink>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="box-btn">
+          <Button :is-icon-only="true" icon="fill-heart" />
+          <Button :is-icon-only="true" icon="basket" />
+        </div>
+      </nav>
+    </Container>
   </header>
 </template>
 
@@ -63,6 +74,7 @@ import Row from '@/components/base/Row.vue'
 import AppLink from '@/components/base/AppLink.vue'
 import Button from '@/components/base/Button.vue'
 import FilterCardCatStore from '@/components/main/FilterCardCatStore.vue'
+import Container from '@/components/base/Container.vue'
 
 // datas fro route-names and title nav
 const routeNames = [
@@ -97,20 +109,18 @@ const resizeHandler = () => {
   isMobile.value = window.innerWidth < '760'
 }
 const scrollHandler = () => {
-  if(document.documentElement.scrollTop > 2){
-   return isScroll.value = true
-  } 
-   return isScroll.value = false
+  if (document.documentElement.scrollTop > 2) {
+    return (isScroll.value = true)
+  }
+  return (isScroll.value = false)
 }
 
 onMounted(() => {
-  scrollHandler(),
-  useEventListener(window,'scroll',scrollHandler)
+  scrollHandler(), useEventListener(window, 'scroll', scrollHandler)
 })
 onUnmounted(() => {
-  useEventListener(window,'scroll',scrollHandler)
-  delete
-  useEventListener(window,'scroll',scrollHandler)
+  useEventListener(window, 'scroll', scrollHandler)
+  delete useEventListener(window, 'scroll', scrollHandler)
 })
 onMounted(() => {
   resizeHandler()
@@ -125,16 +135,16 @@ onUnmounted(() => {
 
 <style scoped>
 .header {
-  @apply w-full flex flex-col relative transition-all duration-700;
+  @apply w-full flex fixed top-0 flex-col  transition-all duration-700 z-[999];
 }
 .scroll-show {
-  @apply fixed top-0 backdrop-blur-sm bg-white/30
+  @apply backdrop-blur-sm bg-white/10;
 }
 .box-logos {
   @apply flex gap-[10px] flex-nowrap items-center justify-between;
 }
 .header-top {
-  @apply w-full flex flex-nowrap justify-between  items-center py-[20px] px-[20px];
+  @apply w-full flex flex-nowrap justify-between  items-center py-[20px] 
 }
 .logo {
   @apply font-Archivo text-[20px] md:text-[25px] uppercase text-white dark:text-black;
@@ -158,7 +168,7 @@ onUnmounted(() => {
   @apply text-white font-kanit dark:text-black smm:text-[13px] md:text-[15px];
 }
 .nav {
-  @apply w-full flex flex-nowrap justify-between items-center py-[10px] px-[20px];
+  @apply w-full flex flex-nowrap justify-between items-center py-[10px];
 }
 .nav-item {
   @apply text-white hover:text-orange-500 dark:text-black;
@@ -179,19 +189,17 @@ onUnmounted(() => {
 }
 .nav-mobile {
   @apply h-screen bg-gray-800 absolute top-0 right-0 left-0 w-0 
-     overflow-hidden duration-700 dark:bg-gray-200 ;
+     overflow-hidden duration-700 dark:bg-gray-200;
 }
 .show-menu-mobile {
-  @apply w-screen origin-left  ;
+  @apply w-screen origin-left;
 }
 
 .list-mobile {
-  @apply flex flex-col justify-center items-center gap-[10px]
+  @apply flex flex-col justify-center items-center gap-[10px];
 }
 
 .box-list-mobile {
-  @apply w-full h-full flex flex-col gap-[50px] px-[20px] py-[25px]
+  @apply w-full h-full flex flex-col gap-[50px] px-[20px] py-[25px];
 }
-
-
 </style>
