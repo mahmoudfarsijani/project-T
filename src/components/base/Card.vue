@@ -48,7 +48,7 @@ const elementClass = computed(() => ({
 }
 
 .cart--row {
-  @apply flex-row;
+  @apply flex-row items-center justify-between;
 }
 
 .cart--rounded {

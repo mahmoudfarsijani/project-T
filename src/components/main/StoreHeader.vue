@@ -138,7 +138,7 @@ onUnmounted(() => {
   @apply w-full flex fixed top-0 flex-col  transition-all duration-700 z-[999];
 }
 .scroll-show {
-  @apply backdrop-blur-sm bg-white/10;
+  @apply backdrop-blur-md bg-white/10;
 }
 .box-logos {
   @apply flex gap-[10px] flex-nowrap items-center justify-between;

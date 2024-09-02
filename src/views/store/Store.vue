@@ -1,32 +1,36 @@
 <template>
   <div class="h-[3000px] w-full">
-    <Transition name="slide" mode="in-out">
-      <RouterView :key="$route.fullPath"/>
-    </Transition>
+    <RouterView v-slot="{Component}">
+      <Transition name="slide" mode="out-in">
+        <component :is="Component" :key="$route.fullPath"></component>
+      </Transition>
+    </RouterView>
+    
   </div>
 </template>
 
 <script setup>
 import { onMounted } from 'vue'
 
+
 onMounted(() => {
   console.log('parent component')
 })
 </script>
 
-<style lang="css" scoped>
+<style scoped>
 .slide-enter-active,
 .slide-leave-active {
   transition:
-    transform 3s,
-    opacity 2s;
+    transform 3s;
 }
 
 
-.slide-leave-to {
-  transform: translateX(-30%);
-}
+
 .slide-enter-from {
   transform: translateX(30%);
+}
+.slide-leave-to {
+  transform: translateX(-30%);
 }
 </style>

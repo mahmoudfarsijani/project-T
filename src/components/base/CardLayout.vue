@@ -27,7 +27,7 @@ const elementClass = computed(() => ({
 <style scoped>
 .cardl {
   @apply  bg-no-repeat  bg-center bg-cover 
-  relative ;
+  relative overflow-hidden ;
 }
 .round-md {
   @apply rounded-md;
