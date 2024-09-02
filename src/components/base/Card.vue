@@ -29,18 +29,20 @@ const props = defineProps({
   isRounded: bool().def(false),
   isRouter: bool().def(false),
   isWhite: bool().def(false),
-  isDark: bool().def(false)
+  isDark: bool().def(false),
+  isPointer:bool().def(false)
 })
 
 const elementClass = computed(() => ({
   'cart--white': props.isWhite,
   'cart--dark': props.isDark,
+  'cart--pointer': props.isPointer
 }))
 </script>
 
 <style scoped>
 .cart {
-  @apply flex;
+  @apply flex overflow-hidden;
 }
 
 .cart--col {
@@ -48,7 +50,7 @@ const elementClass = computed(() => ({
 }
 
 .cart--row {
-  @apply flex-row items-center justify-between;
+  @apply flex-row items-center;
 }
 
 .cart--rounded {
@@ -73,5 +75,9 @@ const elementClass = computed(() => ({
 
 .cart--dark {
     @apply bg-slate-900
+}
+
+.cart--pointer {
+  @apply cursor-pointer
 }
 </style>

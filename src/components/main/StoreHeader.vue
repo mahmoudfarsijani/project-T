@@ -27,7 +27,7 @@
           <FilterCardCatStore class="w-full" />
         </div>
         <!-- desktop -->
-        <ul v-if="!isMobile" class="list-routes">
+        <ul v-if="!isMobile" class="list-routes ">
           <li v-for="item in routeNames" :key="item.id">
             <RouterLink :to="`${item.route}`" class="item-list">
               {{ item.name }}
@@ -153,7 +153,7 @@ onUnmounted(() => {
   @apply flex-1 flex justify-center items-center h-[38px];
 }
 .input-search {
-  @apply px-[10px] py-[5px] w-[45%] outline-none text-black rounded-l-md text-[20px];
+  @apply px-[10px] py-[5px] w-[50%] outline-none text-black rounded-l-md text-[20px];
 }
 .bt-search {
   @apply bg-white h-full py-[20px] justify-center items-center rounded-r-md;
@@ -179,17 +179,17 @@ onUnmounted(() => {
 }
 
 .list-routes {
-  @apply flex flex-nowrap flex-1 justify-center gap-[20px];
+  @apply flex flex-nowrap flex-1 justify-center gap-[30px];
 }
 .item-list {
   @apply capitalize text-black nav-item font-kanit;
 }
 .box-btn {
-  @apply flex flex-nowrap gap-[10px];
+  @apply flex flex-nowrap gap-[35px];
 }
 .nav-mobile {
   @apply h-screen bg-gray-800 absolute top-0 right-0 left-0 w-0 
-     overflow-hidden duration-700 dark:bg-gray-200;
+     overflow-hidden duration-700 dark:bg-gray-200 z-[1111];
 }
 .show-menu-mobile {
   @apply w-screen origin-left;

@@ -48,6 +48,11 @@ const router = createRouter({
           name: 'contact-store',
           path: '/store/contact',
           component: () => import('@/views/store/child/ContactStore.vue')
+        },
+        {
+          name: 'categories-store',
+          path:'/store/categories/:categorie',
+          component: () => import('@/views/store/child/CategorieStore.vue')
         }
       ]
     },

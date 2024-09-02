@@ -136,11 +136,11 @@ onUnmounted(() => {
 }
 
 .swiper--slide:hover .btn--li {
-  @apply scale-x-100   translate-x-[160px]   
+  @apply scale-x-100   translate-x-[10px]   
 }
 
 .swiper--slide:hover .btn--li-mobile {
-  @apply scale-x-100   translate-x-[30px] 
+  @apply scale-x-100   translate-x-[10px] 
 }
 
 .swiper--slide:hover .title {
