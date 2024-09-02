@@ -22,5 +22,5 @@ import { useStoreFetchCat } from '@/composables/useStoreFetchCategories.js'
 import Container from '@/components/base/Container.vue';
 
 const route = useRoute()
-const { dataStoreCat, isLoadingStoreCat, errorStoreCat } = useStoreFetchCat(route.params.categorie)
+const { dataStoreCat, isLoadingStoreCat, errorStoreCat } = useStoreFetchCat('products','category',route.params.categorie)
 </script>

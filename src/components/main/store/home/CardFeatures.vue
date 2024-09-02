@@ -1,5 +1,5 @@
 <template>
-  <Card v-for="item in dataFeature" :key="item.id" tag="li" :is-row="true" :is-rounded="true" class="px-[45px] py-[20px] bg-white gap-[10px]">
+  <Card v-for="item in dataFeature" :key="item.id" tag="li" :is-row="true" :is-rounded="true" class="px-[45px] py-[20px] bg-white duration-700 transition-shadow gap-[10px] ">
     <template #header>
       <Icon :name="item.icon" />
     </template>

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { ref } from 'vue'
 
-export const useStoreFetchCat = (cat) => {
+export const useStoreFetchCat = (name, category = '', catName = '') => {
   const dataStoreCat = ref([])
   const isLoadingStoreCat = ref(false)
   const errorStoreCat = ref(null)
@@ -9,7 +9,7 @@ export const useStoreFetchCat = (cat) => {
   const fetchData = async () => {
     isLoadingStoreCat.value = true
     try {
-      const response = await axios.get(`https://dummyjson.com/products/category/${cat}`)
+      const response = await axios.get(`https://dummyjson.com/${name}/${category}/${catName}`)
       dataStoreCat.value = response.data
     } catch (error) {
       errorStoreCat.value = error.message
