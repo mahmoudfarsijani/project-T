@@ -4,11 +4,10 @@
             <h2 class="title text-[35px] uppercase text-white dark:text-black font-kanit">
                 categories
             </h2>
-            <div class="line"></div>
         </div>
-        <ul tag="ul" class="list-cat mt-[35px]">
+        <RowGrid tag="ul" class="list-cat mt-[35px]">
             <CardCategories/>
-        </ul>
+        </RowGrid>
     </Container>
 </template>
 
@@ -16,12 +15,11 @@
 import Container from '@/components/base/Container.vue'
     import Row from '@/components/base/Row.vue'
     import CardCategories from '@/components/main/store/home/CardCategories.vue';
+    import RowGrid from '@/components/base/RowGrid.vue'
 </script>
 
 <style scoped>
     .list-cat {
-        width: 100%;
-        display: grid;
         grid-template-columns: repeat(auto-fit,minmax(245px,1fr));
         gap: 15px;
     }
