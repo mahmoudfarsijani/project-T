@@ -62,7 +62,7 @@
         </CardLayout>
       </div>
     </div>
-    <div class="box-feature w-full mt-[50px]">
+    <div class="box-feature w-full mt-[60px]">
       <Row tag="ul" class="justify-between" :is-no-wrap="true" :is-col="isMobile ? true : false" :class="{'gap-[20px]': isMobile}">
         <CardFeatures />
       </Row>

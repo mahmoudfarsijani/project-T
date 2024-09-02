@@ -1,5 +1,5 @@
 <template>
-    <Main class="pt-[200px]">
+    <Main>
         <SecOne/>
         <SecTwo/>
     </Main>

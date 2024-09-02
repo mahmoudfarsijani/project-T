@@ -1,6 +1,6 @@
 <template>
   <div class="h-[3000px] w-full">
-    <RouterView v-slot="{Component}">
+    <RouterView v-slot="{Component}" class="pt-[180px]">
       <Transition name="slide" mode="out-in">
         <component :is="Component" :key="$route.fullPath"></component>
       </Transition>
