@@ -658,8 +658,8 @@
   <!-- empty-star -->
   <g v-else-if="name === 'empty-star'">
     <svg
-      width="800px"
-      height="800px"
+      width="13px"
+      height="13px"
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -675,8 +675,8 @@
   <!-- fill-star -->
   <g v-else-if="name === 'fill-star'">
     <svg
-      width="800px"
-      height="800px"
+      width="13px"
+      height="13px"
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -690,8 +690,8 @@
   <!-- empty-heart -->
   <g v-else-if="name === 'empty-heart'">
     <svg
-      width="800px"
-      height="800px"
+      width="20px"
+      height="20px"
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

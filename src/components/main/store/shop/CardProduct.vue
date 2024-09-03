@@ -1,19 +1,30 @@
 <template>
-  <Card :is-white="true" class="w-[200px] p-[10px] rounded-lg">
+  <Card tag="RouterLink" :to="`/store/product-detail/${product.id}`"  :is-white="true" :is-pointer="true" class="cart_product">
     <template #header>
-      <div class="box-img w-full h-[200px]">
+      <div class="box_img ">
         <Img :src="product.thumbnail" :alt="product.title"/>
+        <div class="box_img--layout ">
+          <div class="box__img-layout--btns ">
+            <Button :is-icon-only="true" icon="empty-heart"/>
+            <Button :is-icon-only="true" icon="basket"/>
+          </div>
+        </div>
       </div>
     </template>
-    <div class="body flex flex-col items-center h-[120px] justify-between">
-      <h3 class="title h-[50px] text-black text-center font-kanit text-[16px]">
+    <div class="cart_product--body ">
+      <h3 class="title ">
         {{ product.title }}
       </h3>
-      <p class="price text-black font-mono text-[18px]">
+      <p class="price">
         ${{ product.price }}
       </p>
-      <div class="star-box text-black">
-        {{ product.rating }}
+      <div class="flex flex-nowrap w-full justify-center items-center gap-[10px]">
+        <div class="star-box ">
+          <Icon v-for="item in ratingValue" :key="item.rate" :name="product.rating >= item.rate  ? 'fill-star' : 'empty-star'   "/>
+        </div>
+        <span class="text-[13px] text-black font-suns">
+          {{ productRate }}
+        </span>
       </div>
     </div>
   </Card>
@@ -25,16 +36,78 @@ import { string, number, shape, object } from 'vue-types'
 import Card from '@/components/base/Card.vue'
 import Img from '@/components/base/Img.vue'
 import Icon from '@/components/base/Icon.vue'
+import Button from '@/components/base/Button.vue'
+import { computed } from 'vue'
 
 
 const props = defineProps({
-     product: shape({
-        id: number(),
-        title: string(),
-        category:string(),
-        price: number(),
-        rating:number(),
-        thumbnail: string()
+     product: object({
+        id: number().isRequired,
+        title: string().isRequired,
+        category:string().isRequired,
+        price: number().isRequired,
+        rating:number().isRequired,
+        thumbnail: string().isRequired
      })
 })
+
+const ratingValue = [
+  {
+    rate: 1
+  },
+  {
+    rate: 2
+  },
+  {
+    rate: 3
+  },
+  {
+    rate: 4
+  }, {
+    rate: 5
+  }
+]
+
+const productRate = computed(() => props.product.rating.toFixed(1))
 </script>
+
+
+<style scoped>
+  .cart_product {
+    @apply w-[200px] p-[10px] rounded-lg hover:shadow-md duration-700 
+  }
+
+  .box_img {
+    @apply w-full h-[200px] relative
+  }
+
+  .box_img--layout {
+    @apply w-full h-0 absolute inset-0  bg-white bg-opacity-75 flex justify-center items-center rounded-lg   duration-700 overflow-hidden
+  }
+
+  .cart_product:hover .box_img--layout {
+    @apply  h-full
+  }
+
+  .cart_product--body {
+    @apply flex flex-col items-center h-[120px] justify-between
+  }
+
+  .title {
+    @apply h-[50px] text-black text-center font-kanit text-[16px]
+  }
+
+  .price {
+    @apply  text-black font-mono text-[18px]
+  }
+
+  .star-box {
+    @apply text-black flex flex-nowrap
+  }
+
+  .box__img-layout--btns {
+    @apply flex flex-nowrap gap-[25px] 
+  }
+
+ 
+</style>

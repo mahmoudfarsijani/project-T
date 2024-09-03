@@ -1,5 +1,5 @@
 <template>
-    <component :is="tag" class="container">
+    <component :is="tag" class="container mx-auto">
         <slot/>
     </component>
 </template>
@@ -12,3 +12,16 @@
         tag:oneOf(['div','section']).def('div')
     })
 </script>
+
+<style lang="css" scoped>
+    .container {
+        --max-width:100%;
+        width:var(--max-width)
+    
+    }
+    @media screen and  (max-width:768) {
+       .container {
+        --max-width:990px
+       }
+    }
+</style>

@@ -1,6 +1,6 @@
 <template>
   <Main class="pt-[200px]">
-    <Container class="flex flex-nowrap gap-[20px]">
+    <Container class="flex flex-wrap lg:flex-nowrap gap-[20px]">
         <Aside></Aside>
         <Main>
             <div>

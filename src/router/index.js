@@ -53,6 +53,11 @@ const router = createRouter({
           name: 'categories-store',
           path:'/store/categories/:categorie',
           component: () => import('@/views/store/child/CategorieStore.vue')
+        },
+        {
+          name:'product-detail',
+          path:'/store/product-detail/:id',
+          component: () => import('@/views/store/child/ProductDetail.vue')
         }
       ]
     },
