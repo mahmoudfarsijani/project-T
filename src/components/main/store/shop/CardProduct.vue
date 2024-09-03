@@ -86,7 +86,7 @@ const productRate = computed(() => props.product.rating.toFixed(1))
   }
 
   .box_img--layout {
-    @apply w-full h-0 absolute inset-0  bg-white bg-opacity-75 flex justify-center items-center rounded-lg   duration-700 overflow-hidden
+    @apply w-full h-0 absolute inset-0  bg-white bg-opacity-95 flex justify-center items-center rounded-lg   duration-700 overflow-hidden
   }
 
   .cart_product:hover .box_img--layout {

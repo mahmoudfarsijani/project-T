@@ -5,7 +5,13 @@
         featured products
       </h2>
     </div>
-    <RowGrid tag="ul" class="list-cat mt-[35px]">
+    <div v-if="isLoadingStore">
+        <span class="loading loading-spinner loading-lg bg-black"></span>
+    </div>
+    <div v-else-if="errorStore">
+        {{ errorStore }}
+    </div>
+    <RowGrid v-else tag="ul" class="list-cat mt-[35px]">
       <CardProduct v-for="item in dataSlice" :key="item.id" :product="item" />
     </RowGrid>
   </Container>
