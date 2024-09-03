@@ -73,7 +73,7 @@ import { nanoid } from 'nanoid'
 import Row from '@/components/base/Row.vue'
 import AppLink from '@/components/base/AppLink.vue'
 import Button from '@/components/base/Button.vue'
-import FilterCardCatStore from '@/components/main/FilterCardCatStore.vue'
+import FilterCardCatStore from '@/components/main/store/FilterCardCatStore.vue'
 import Container from '@/components/base/Container.vue'
 
 // datas fro route-names and title nav

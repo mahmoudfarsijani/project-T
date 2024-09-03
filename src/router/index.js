@@ -19,7 +19,8 @@ const router = createRouter({
       redirect: '/store/home',
       components: {
         default: () => import('@/views/store/Store.vue'),
-        headerStore: () => import('@/components/main/StoreHeader.vue')
+        headerStore: () => import('@/components/main/store/StoreHeader.vue'),
+        footerStore: () => import('@/components/main/store/StoreFooter.vue')
       },
       meta: { title: 'Store Market', requiresAuth: false },
       children: [

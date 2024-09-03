@@ -4,6 +4,7 @@
         <SecTwo/>
         <SecThree/>
         <SecFour/>
+        <SecFive/>
     </Main>
 </template>
 
@@ -15,6 +16,7 @@
     import SecTwo from '@/components/main/store/home/SecTwo.vue'
     import SecThree from '@/components/main/store/home/SecThree.vue'
     import SecFour from '@/components/main/store/home/SecFour.vue'
+    import SecFive from '@/components/main/store/home/SecFive.vue'
     import Main from '@/components/base/Main.vue';
 
 
