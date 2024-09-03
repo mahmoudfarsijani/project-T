@@ -93,8 +93,8 @@
   <!-- arrow left -->
   <g v-else-if="name === 'arrow-left'">
     <svg
-      width="800px"
-      height="800px"
+      width="18px"
+      height="18px"
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -295,8 +295,8 @@
   <g v-else-if="name === 'gmail'">
     <svg
       fill="#000000"
-      width="800px"
-      height="800px"
+      width="18px"
+      height="18px"
       viewBox="0 0 32 32"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -308,8 +308,8 @@
   <!-- instagram -->
   <g v-else-if="name === 'instagram'">
     <svg
-      width="800px"
-      height="800px"
+      width="18px"
+      height="18px"
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -390,8 +390,8 @@
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
-      width="800px"
-      height="800px"
+      width="18px"
+      height="18px"
       viewBox="0 0 512 512"
       xml:space="preserve"
     >
@@ -416,8 +416,8 @@
       id="Capa_1"
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
-      width="800px"
-      height="800px"
+      width="18px"
+      height="18px"
       viewBox="0 0 395.71 395.71"
       xml:space="preserve"
     >
@@ -451,13 +451,13 @@
   <!-- phone -->
   <g v-else-if="name === 'phone'">
     <svg
-      width="23px"
-      height="23px"
+      width="18px"
+      height="18px"
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <rect width="24" height="24"/>
+      <rect width="24" height="24" />
       <path
         fill-rule="evenodd"
         clip-rule="evenodd"
@@ -557,8 +557,8 @@
   <!-- twitter -->
   <g v-else-if="name === 'twitter'">
     <svg
-      width="800px"
-      height="800px"
+      width="18px"
+      height="18px"
       viewBox="0 0 16 16"
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -1004,6 +1004,24 @@
       <path
         d="M0 21.984q0.032-0.8 0.608-1.376l4-4q0.448-0.48 1.056-0.576t1.12 0.128 0.864 0.736 0.352 1.12v1.984h18.016q0.8 0 1.408-0.576t0.576-1.408v-8q0-0.832-0.576-1.408t-1.408-0.608h-16q-0.736 0-1.248-0.416t-0.64-0.992 0-1.152 0.64-1.024 1.248-0.416h16q2.464 0 4.224 1.76t1.76 4.256v8q0 2.496-1.76 4.224t-4.224 1.76h-18.016v2.016q0 0.64-0.352 1.152t-0.896 0.704-1.12 0.096-1.024-0.544l-4-4q-0.64-0.608-0.608-1.44z"
       ></path>
+    </svg>
+  </g>
+  <!-- right -->
+  <g v-else-if="name === 'right'">
+    <svg
+      width="18px"
+      height="18px"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M10 7L15 12L10 17"
+        stroke="#000000"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
     </svg>
   </g>
 </template>

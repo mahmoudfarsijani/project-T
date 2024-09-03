@@ -1,5 +1,12 @@
 <template>
-    <div class="w-full h-[300px] bg-red-500">
-        footer
-    </div>
+  <footer class="w-full h-[350px] mt-[80px] bg-gray-600 py-[25px]">
+    <Container>
+      <BoxFooter />
+    </Container>
+  </footer>
 </template>
+
+<script setup>
+import BoxFooter from '@/components/main/store/BoxFooter.vue'
+import Container from '@/components/base/Container.vue'
+</script>

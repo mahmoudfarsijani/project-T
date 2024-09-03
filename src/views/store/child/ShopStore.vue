@@ -15,7 +15,6 @@
           </div>
           <RowGrid v-else class="list-grid">
             <CardProduct v-for="item in dataStore.products" :key="item.id" :product="item" />
-            {{ dataStore }}
           </RowGrid>
         </div>
       </Main>
