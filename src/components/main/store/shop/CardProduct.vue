@@ -2,7 +2,7 @@
   <Card tag="RouterLink" :to="`/store/product-detail/${product.id}`"  :is-white="true" :is-pointer="true" class="cart_product">
     <template #header>
       <div class="box_img ">
-        <Img :src="product.thumbnail" :alt="product.title"/>
+        <Img :src="product.thumbnail" :alt="product.title" class="box_img--img"/>
         <div class="box_img--layout ">
           <div class="box__img-layout--btns ">
             <Button :is-icon-only="true" icon="empty-heart"/>
@@ -78,7 +78,11 @@ const productRate = computed(() => props.product.rating.toFixed(1))
   }
 
   .box_img {
-    @apply w-full h-[200px] relative
+    @apply w-full h-[200px] relative overflow-hidden
+  }
+
+  .box_img--img {
+    @apply w-full  duration-700 transition-transform
   }
 
   .box_img--layout {
@@ -107,6 +111,10 @@ const productRate = computed(() => props.product.rating.toFixed(1))
 
   .box__img-layout--btns {
     @apply flex flex-nowrap gap-[25px] 
+  }
+
+  .cart_product:hover .box_img--img {
+    @apply scale-150
   }
 
  

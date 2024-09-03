@@ -35,7 +35,7 @@ const { dataStore, errorStore, isLoadingStore } = useStoreFetch()
 </script>
 <style scoped>
 .list-grid {
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 25px 50px;
 }
 </style>
