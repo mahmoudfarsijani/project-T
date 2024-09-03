@@ -1,19 +1,20 @@
 import axios from 'axios'
 import { ref } from 'vue'
 
-export const useStoreFetch = () => {
+export const useStoreFetch = (id = '') => {
   const dataStore = ref([])
-  const isLoading = ref(false)
+  const isLoadingStore = ref(false)
   const errorStore = ref(null)
   const fetchData = async () => {
-    isLoading.value = true
+    isLoadingStore.value = true
     try {
-      const response = await axios.get('https://dummyjson.com/products')
+      const response = await axios.get(`https://dummyjson.com/products${id ? `/${id}` : ''}`)
+      console.log(response);
       dataStore.value = response.data
     } catch (error) {
       errorStore.value = error.message
     } finally {
-      isLoading.value = false
+      isLoadingStore.value = false
     }
   }
   fetchData()
@@ -21,6 +22,6 @@ export const useStoreFetch = () => {
   return {
     dataStore,
     errorStore,
-    isLoading
+    isLoadingStore
   }
 }
