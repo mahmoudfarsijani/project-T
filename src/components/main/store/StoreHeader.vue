@@ -13,7 +13,13 @@
           <RouterLink :to="{ name: 'home' }" class="logo"> red store </RouterLink>
         </div>
         <div v-if="!isMobile" class="box-search">
-          <InputBox icons="search" :is-absolute="true" :is-bigged="true" :is-rounded="true"/>
+          <InputBox
+            icons="search"
+            :is-absolute="true"
+            :is-bigged="true"
+            :is-rounded="true"
+            placeholder="Search"
+          />
         </div>
         <div v-if="!isMobile" class="box-servise">
           <span class="title-service">customer service</span>

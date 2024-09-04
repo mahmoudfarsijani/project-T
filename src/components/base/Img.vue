@@ -1,6 +1,8 @@
 <template>
     <v-lazy-image
         :src="src"
+        :src-placeholder="loadingImage"
+        :src-error="errorImage"
         :alt="alt"
     />
 </template>
@@ -14,4 +16,7 @@
         src: string(),
         alt: string()
     })
+
+    const loadingImage = '/img/loadng-img.gif'
+    const errorImage = '/img/error-img.jpg'
 </script>

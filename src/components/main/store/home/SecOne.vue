@@ -63,7 +63,7 @@
       </div>
     </div>
     <div class="box-feature w-full mt-[60px]">
-      <Row tag="ul" class="justify-between" :is-no-wrap="true" :is-col="isMobile ? true : false" :class="{'gap-[20px]': isMobile}">
+      <Row v-if="dataFeature" tag="ul" class="justify-between" :is-no-wrap="true" :is-col="isMobile ? true : false" :class="{'gap-[20px]': isMobile}">
         <CardFeatures />
       </Row>
     </div>
@@ -79,11 +79,14 @@ import Row from '@/components/base/Row.vue'
 import CardFeatures from '@/components/main/store/home/CardFeatures.vue'
 import { listDataLayout } from '@/data/listCardLayoutStoreHome.js'
 import { useEventListener } from '@vueuse/core'
- 
+import { listFeature } from '@/data/listCardFeaturesStore.js'
+
+
 
 
 
 const { dataMain, dataCard } = listDataLayout();
+const { dataFeature } = listFeature()
 
 const isMobile = ref(false)
 
