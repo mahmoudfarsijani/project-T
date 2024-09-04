@@ -32,7 +32,7 @@
       return dataStore.value.products
     })
     const dataSlice = computed(() => {
-      return slice(dataStoreFinall.value, 0, 12)
+      return slice(dataStoreFinall.value, 0, 6)
     })
   </script>
 

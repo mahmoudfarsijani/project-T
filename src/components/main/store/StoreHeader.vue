@@ -13,8 +13,7 @@
           <RouterLink :to="{ name: 'home' }" class="logo"> red store </RouterLink>
         </div>
         <div v-if="!isMobile" class="box-search">
-          <input type="text" class="input-search" placeholder="Search" />
-          <Button :is-icon-only="true" icon="search" class="bt-search" />
+          <InputBox icons="search" :is-absolute="true" :is-bigged="true" :is-rounded="true"/>
         </div>
         <div v-if="!isMobile" class="box-servise">
           <span class="title-service">customer service</span>
@@ -27,7 +26,7 @@
           <FilterCardCatStore class="w-full" />
         </div>
         <!-- desktop -->
-        <ul v-if="!isMobile" class="list-routes ">
+        <ul v-if="!isMobile" class="list-routes">
           <li v-for="item in routeNames" :key="item.id">
             <RouterLink :to="`${item.route}`" class="item-list">
               {{ item.name }}
@@ -75,6 +74,7 @@ import AppLink from '@/components/base/AppLink.vue'
 import Button from '@/components/base/Button.vue'
 import FilterCardCatStore from '@/components/main/store/FilterCardCatStore.vue'
 import Container from '@/components/base/Container.vue'
+import InputBox from '@/components/main/store/InputBox.vue'
 
 // datas fro route-names and title nav
 const routeNames = [
@@ -144,7 +144,7 @@ onUnmounted(() => {
   @apply flex gap-[10px] flex-nowrap items-center justify-between;
 }
 .header-top {
-  @apply w-full flex flex-nowrap justify-between  items-center py-[20px] 
+  @apply w-full flex flex-nowrap justify-between  items-center py-[20px];
 }
 .logo {
   @apply font-Archivo text-[20px] md:text-[25px] uppercase text-white dark:text-black;

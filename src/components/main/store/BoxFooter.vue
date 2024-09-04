@@ -24,7 +24,7 @@
     <div class="box_2">
       <h3 class="title">Quick Shop</h3>
       <Row tag="ul" :is-col="true" class="list_contact">
-        <Button  v-for="item in dataFooter" :key="item.id" tag="button" :is-icon-only="false" icon="right" :is-left="true">
+        <Button  v-for="item in dataFooter" :key="item.id" tag="button" :is-icon-only="false" icon="right" :is-left="true" >
             {{ item.name }}
         </Button>
       </Row>
@@ -33,8 +33,11 @@
       <h3 class="title">Newsletter</h3>
       <p class="subtitle">Duo stet tempor ipsum sit amet magna ipsum tempor est</p>
       <div class="box_email">
-        <input type="text" />
+        <InputBox :is-icon-only="false" title-btn="sign up" :is-dangered="true" :is-left="true" :is-right="true"/>
       </div>
+      <h4 class="follow_title">
+        follow us
+      </h4>
       <Row tag="ul" :is-col="false" class="box_social">
         <Button v-for="item in dataButton" :key="item.id" tag="button" :is-icon-only="true"  :icon="item.icon" :is-primary="true" :is-rounded-full="true" class="p-[10px] justify-center items-center"/>
       </Row>
@@ -46,6 +49,7 @@
 import Button from '@/components/base/Button.vue'
 import Icon from '@/components/base/Icon.vue'
 import Row from '@/components/base/Row.vue'
+import InputBox from '@/components/main/store/InputBox.vue'
 import { listDataFooter } from '@/data/listRouteStoreFooter.js'
 
 const { dataFooter,dataButton } = listDataFooter()
@@ -78,5 +82,9 @@ const { dataFooter,dataButton } = listDataFooter()
 
 .box_3 {
     @apply flex flex-col gap-[25px]
+}
+
+.follow_title {
+  @apply font-kanit text-[20px] capitalize
 }
 </style>

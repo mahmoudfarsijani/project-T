@@ -1,5 +1,5 @@
 <template>
-  <Card tag="RouterLink" :to="`/store/product-detail/${product.id}`"  :is-white="true" :is-pointer="true" class="cart_product">
+  <Card v-if="product" tag="RouterLink" :to="`/store/product-detail/${product.id}`"  :is-white="true" :is-pointer="true" class="cart_product">
     <template #header>
       <div class="box_img ">
         <Img :src="product.thumbnail" :alt="product.title" class="box_img--img"/>

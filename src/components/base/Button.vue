@@ -23,14 +23,16 @@ const props =  defineProps({
   isDanger: bool().def(false),
   isRoundedFull: bool().def(false),
   isRoundedSm: bool().def(false),
-  isLeft: bool().def(false)
+  isLeft: bool().def(false),
+  isRightRounded: bool().def(false)
 })
 
 const elementClass = computed(() => ({
   'but--primary': props.isPrimary,
   'but--danger': props.isDanger,
   'but--roundedfull': props.isRoundedFull,
-  'but--roundedsm': props.isRoundedSm
+  'but--roundedsm': props.isRoundedSm,
+  'but-r-rounded': props.isRightRounded
 }))
 </script>
 
@@ -61,5 +63,9 @@ const elementClass = computed(() => ({
 
 .but--roundedsm {
   @apply rounded-sm;
+}
+
+.but-r-rounded {
+  @apply rounded-r-md
 }
 </style>
