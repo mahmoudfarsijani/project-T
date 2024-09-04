@@ -1,5 +1,5 @@
 <template>
     <div>
-        detail shop store 
+        box products
     </div>
 </template>

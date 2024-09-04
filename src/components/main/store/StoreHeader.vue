@@ -62,8 +62,13 @@
           </div>
         </div>
         <div class="box-btn">
-          <Button :is-icon-only="true" icon="fill-heart" />
-          <Button :is-icon-only="true" icon="basket" />
+          <div class="flex flex-nowrap items-center justify-center gap-[5px]">
+            <Button tag="RouterLink" to="/store/fav-products" :is-icon-only="true" icon="fill-heart" />
+            <span class="text-[15px] text-black">
+              {{ favBasketLength.lengthBasketFav }}
+            </span>
+          </div>
+          <Button tag="RouterLink" to="/store/basket-products" :is-icon-only="true" icon="basket" />
         </div>
       </nav>
     </Container>
@@ -81,6 +86,7 @@ import Button from '@/components/base/Button.vue'
 import FilterCardCatStore from '@/components/main/store/FilterCardCatStore.vue'
 import Container from '@/components/base/Container.vue'
 import InputBox from '@/components/main/store/InputBox.vue'
+import {useFavBasketStore} from '@/stores/favBasketStore.js'
 
 // datas fro route-names and title nav
 const routeNames = [
@@ -92,11 +98,6 @@ const routeNames = [
   {
     name: 'shop',
     route: '/store/shop',
-    id: nanoid(3)
-  },
-  {
-    name: 'shop detail',
-    route: '/store/detail-shop',
     id: nanoid(3)
   },
   {
@@ -120,6 +121,9 @@ const scrollHandler = () => {
   }
   return (isScroll.value = false)
 }
+
+// data store
+const favBasketLength = useFavBasketStore()
 
 onMounted(() => {
   scrollHandler(), useEventListener(window, 'scroll', scrollHandler)

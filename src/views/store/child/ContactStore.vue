@@ -1,5 +1,10 @@
 <template>
-    <div>
+    <Container class="min-h-screen
+    ">
         contact
-    </div>
+    </Container>
 </template>
+
+<script setup>
+    import Container from '@/components/base/Container.vue'
+</script>

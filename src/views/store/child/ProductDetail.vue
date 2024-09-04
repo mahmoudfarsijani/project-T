@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Container>
+        <Container class="min-h-screen">
             {{ dataStore}}
         </Container>
     </div>

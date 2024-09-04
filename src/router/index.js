@@ -41,11 +41,6 @@ const router = createRouter({
           component: () => import('@/views/store/child/ShopStore.vue')
         },
         {
-          name: 'detail-shop-store',
-          path: '/store/detail-shop',
-          component: () => import('@/views/store/child/DetailShopStore.vue')
-        },
-        {
           name: 'contact-store',
           path: '/store/contact',
           component: () => import('@/views/store/child/ContactStore.vue')
@@ -58,8 +53,18 @@ const router = createRouter({
         {
           name: 'product-detail',
           path: '/store/product-detail/:id',
-          component: () => import('@/views/store/child/ProductDetail.vue'),
+          component: () => import('@/views/store/child/ProductDetail.vue')
           // props: (route) => ({ ...route.params.id, id: parseInt(route.params.id )})
+        },
+        {
+          name: 'fav-products',
+          path: '/store/fav-products',
+          component: () => import('@/views/store/child/FavProducts.vue')
+        },
+        {
+          name: 'basket-products',
+          path: '/store/basket-products',
+          component: () => import('@/views/store/child/BasketProducts.vue')
         }
       ]
     },
