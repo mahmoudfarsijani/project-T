@@ -4,10 +4,10 @@ import '@/assets/tailwind.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 
-
 import router from './router'
 import Pinia from './store'
-import VLazyImage from 'v-lazy-image';
+import VLazyImage from 'v-lazy-image'
+ 
 
 const app = createApp(App)
 
@@ -25,5 +25,5 @@ const app = createApp(App)
 
 app.use(router)
 app.use(Pinia)
-app.component('v-lazy-image',VLazyImage)
+app.component('v-lazy-image', VLazyImage)
 app.mount('#app')
