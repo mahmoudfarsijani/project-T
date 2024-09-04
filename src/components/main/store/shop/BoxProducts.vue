@@ -6,9 +6,18 @@
       </p>
     </div>
     <div class="box_main">
-      <swiper :slides-per-view="1" :loop="true" :autoplay="{ delay: 3000 }" class="w-[500px] h-[450px] overflow-hidden">
-        <swiper-slide v-for="(image, index) in product.images" :key="index" class="p-[20px] h-full overflow-hidden ">
-          <Img :src="image" :alt="index" class="h-full mx-auto"/>
+      <swiper
+        :slides-per-view="1"
+        :loop="true"
+        :autoplay="{ delay: 3000 }"
+        class="w-[500px] h-[450px] overflow-hidden"
+      >
+        <swiper-slide
+          v-for="(image, index) in product.images"
+          :key="index"
+          class="p-[20px] h-full overflow-hidden"
+        >
+          <Img :src="image" :alt="index" class="h-full mx-auto" />
         </swiper-slide>
         <div class="swiper-pagination"></div>
       </swiper>
@@ -17,14 +26,29 @@
           {{ product.title }}
         </h2>
         <div class="box_rating">
-          <Icon v-for="item in rating" :key="rating.id" :name="item.rate >= product.rating  ? 'empty-star':'fill-star'" />
+          <Icon
+            v-for="item in rating"
+            :key="rating.id"
+            :name="item.rate >= product.rating ? 'empty-star' : 'fill-star'"
+          />
         </div>
         <p class="price">${{ product.price }}</p>
         <p class="description">
           {{ product.description }}
         </p>
-        <BoxFilterSizeProduct @SelectValue="changed"/>
-        {{ dataFilterSize }}
+        <div class="flex flex-nowrap gap-[5px]">
+          <p class="title_size">sizes</p>
+          <BoxFilterRadioProduct
+            v-for="option in optionsFilterSize"
+            name="myFilterSize"
+            :key="option.value"
+            :label="option.label"
+            :model-value="dataFilterSize"
+            :value="option.value"
+            @update:modelValue="updateSelectedValue"
+          />
+          {{ dataFilterSize }}
+        </div>
         <div class="box_baskets"></div>
         <div class="box_share"></div>
       </div>
@@ -38,7 +62,7 @@ import { string, number, shape, object, array } from 'vue-types'
 import Img from '@/components/base/Img.vue'
 import Button from '@/components/base/Button.vue'
 import Icon from '@/components/base/Icon.vue'
-import BoxFilterSizeProduct from '@/components/main/store/shop/BoxFilterSizeProduct.vue'
+import BoxFilterRadioProduct from '@/components/main/store/shop/BoxFilterRadioProduct.vue'
 import { nanoid } from 'nanoid'
 
 import { Swiper, SwiperSlide } from 'swiper/vue'
@@ -46,8 +70,8 @@ import 'swiper/swiper-bundle.css'
 
 const dataFilterSize = ref('')
 
-const changed = (data) => {
-    dataFilterSize.value = data
+const updateSelectedValue = (newValue) => {
+  dataFilterSize.value = newValue
 }
 
 const props = defineProps({
@@ -86,26 +110,49 @@ const props = defineProps({
 })
 
 const rating = [
-    {
-        id:nanoid(3),
-        rate:1
-    },
-    {
-        id:nanoid(3),
-        rate:2
-    },
-    {
-        id:nanoid(3),
-        rate:3
-    },
-    {
-        id:nanoid(3),
-        rate:4
-    },
-    {
-        id:nanoid(3),
-        rate:5
-    }
+  {
+    id: nanoid(3),
+    rate: 1
+  },
+  {
+    id: nanoid(3),
+    rate: 2
+  },
+  {
+    id: nanoid(3),
+    rate: 3
+  },
+  {
+    id: nanoid(3),
+    rate: 4
+  },
+  {
+    id: nanoid(3),
+    rate: 5
+  }
+]
+
+const optionsFilterSize = [
+  {
+    label: 'xs',
+    value: 'xs'
+  },
+  {
+    label: 's',
+    value: 's'
+  },
+  {
+    label: 'l',
+    value: 'l'
+  },
+  {
+    label: 'm',
+    value: 'm'
+  },
+  {
+    label: 'xl',
+    value: 'xl'
+  }
 ]
 </script>
 
@@ -134,14 +181,14 @@ const rating = [
 }
 
 .box_rating {
-    @apply flex flex-nowrap gap-[2px]
+  @apply flex flex-nowrap gap-[2px];
 }
 
 .description {
-    @apply text-gray-700 w-[80%]
+  @apply text-gray-700 w-[80%];
 }
 
-.price{
-    @apply text-gray-700 font-suns text-[25px]
+.price {
+  @apply text-gray-700 font-suns text-[25px];
 }
 </style>
