@@ -24,7 +24,8 @@ const props =  defineProps({
   isRoundedFull: bool().def(false),
   isRoundedSm: bool().def(false),
   isLeft: bool().def(false),
-  isRightRounded: bool().def(false)
+  isRightRounded: bool().def(false),
+  isYellow:bool().def(false)
 })
 
 const elementClass = computed(() => ({
@@ -32,7 +33,8 @@ const elementClass = computed(() => ({
   'but--danger': props.isDanger,
   'but--roundedfull': props.isRoundedFull,
   'but--roundedsm': props.isRoundedSm,
-  'but-r-rounded': props.isRightRounded
+  'but-r-rounded': props.isRightRounded,
+  'but--yellow': props.isYellow
 }))
 </script>
 
@@ -42,7 +44,7 @@ const elementClass = computed(() => ({
 }
 
 .button--default {
-    @apply justify-center
+    @apply justify-center p-[10px]
 }
 
 .button--simple {
@@ -67,5 +69,9 @@ const elementClass = computed(() => ({
 
 .but-r-rounded {
   @apply rounded-r-md
+}
+
+.but--yellow {
+  @apply bg-yellow-400
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-nowrap gap-[7px]">
-      <label class="uppercase flex flex-nowrap gap-[5px]">
+      <label class="uppercase flex flex-nowrap gap-[5px] text-gray-200 dark:text-gray-700">
         <input
           type="radio"
           :checked="modelValue === value"
