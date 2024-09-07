@@ -81,7 +81,7 @@ const ratingValue = [
   }
 ]
 
-const productRate = computed(() => props.product.rating.toFixed(1))
+const productRate = computed(() => (props.product.rating))
 
 // store
 //for fav list

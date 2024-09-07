@@ -10,17 +10,17 @@ export const useFavBasketStore = defineStore('favBasket',{
             localStorage.setItem('favBasketStore',JSON.stringify(this.basket))
         },
         addFav(prodId){
-            const index = this.basket.indexOf(prodId.id)
+            const index = this.basket.indexOf(prodId)
             if(index > -1){
                 this.basket.splice(index,1)
                 this.persist()
             } else {
-                this.basket.push(prodId.id)
+                this.basket.push(prodId)
                 this.persist()
             }
         },
         isAvailable(prod){
-            return this.basket.indexOf(prod.id) > -1
+            return this.basket.indexOf(prod) > -1
         }
     },
     getters: {
