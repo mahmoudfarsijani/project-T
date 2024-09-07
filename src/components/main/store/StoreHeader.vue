@@ -62,11 +62,11 @@
           </div>
         </div>
         <div class="box-btn">
-          <div class="flex flex-nowrap items-center justify-center gap-[5px]">
-            <Button tag="RouterLink" to="/store/fav-products" :is-icon-only="true" icon="fill-heart" />
-            <span class="text-[15px] text-black">
+          <div class="flex flex-nowrap items-center">
+            <Button tag="RouterLink"  to="/store/fav-products" :is-icon-only="true" icon="fill-heart" />
+            <label  class="text-[13px] bg-blue-300 text-black px-[6px] rounded-full border-black border-[1px]">
               {{ favBasketLength.lengthBasketFav }}
-            </span>
+            </label>
           </div>
           <Button tag="RouterLink" to="/store/basket-products" :is-icon-only="true" icon="basket" />
         </div>

@@ -1,5 +1,4 @@
 <template>
-  <div>
     <Container class="min-h-screen">
       <div class="box-1">
         <div v-if="isLoadingStore">
@@ -11,7 +10,6 @@
         <BoxProducts v-else :product="dataStore" />
       </div>
     </Container>
-  </div>
 </template>
 
 <script setup>

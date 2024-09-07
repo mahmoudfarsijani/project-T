@@ -5,12 +5,13 @@
         {{ $route.path }}
       </p>
     </div>
-    <div class="box_main flex   flex-nowrap gap-[10px] mt-[25px]">
+    {{ product }}
+    <div class="box_main flex flex-col lg:flex-row gap-[10px] mt-[25px]">
       <swiper
         :slides-per-view="1"
         :loop="true"
         :autoplay="{ delay: 3000 }"
-        class="w-[500px] h-[450px] overflow-hidden bg-white rounded-md"
+        class="w-full lg:w-[45%]  h-[450px] overflow-hidden bg-white rounded-md"
       >
         <swiper-slide
           v-for="(image, index) in product.images"
@@ -21,7 +22,7 @@
         </swiper-slide>
         <div class="swiper-pagination"></div>
       </swiper>
-      <div v-if="product" class="box_detail h-[450px] bg-white rounded-md">
+      <div v-if="product" class="box_detail h-[500px] lg:h-[450px] overflow-hidden bg-white rounded-md">
         <h2 class="title">
           {{ product.title }}
         </h2>
@@ -36,8 +37,8 @@
         <p class="description">
           {{ product.description }}
         </p>
-        <div class="flex flex-col flex-nowrap gap-[15px] mt-[25px]">
-          <div class="flex flex-nowrap gap-[10px]">
+        <div  class="flex flex-col flex-nowrap gap-[15px] mt-[25px]">
+          <div v-if=" product.category === 'mens-shirts' || product.category ==='womens-dresses'" class="flex flex-nowrap gap-[10px]">
             <p class="title_size text-gray-200 dark:text-gray-700 capitalize">sizes:</p>
             <BoxFilterRadioProduct
               v-for="option in optionsFilterSize"
@@ -49,7 +50,7 @@
               @update:modelValue="updateSelectedSizeValue"
             />
           </div>
-          <div class="flex flex-nowrap gap-[10px]">
+          <div v-if="product.category === 'mens-shoes' || product.category ==='mens-shirts' || product.category ==='womens-dresses'" class="flex  gap-[10px]">
             <p class="title_size text-gray-200 dark:text-gray-700 capitalize">colors:</p>
             <BoxFilterRadioProduct
               v-for="option in optionsFilterColor"
@@ -59,6 +60,18 @@
               :model-value="dataFilterColor"
               :value="option.value"
               @update:modelValue="updateSelectedColorValue"
+            />
+          </div>
+          <div v-if="product.category === 'womens-shoes' || product.category ==='mens-shoes'" class="flex  gap-[10px]">
+            <p class="title_size text-gray-200 dark:text-gray-700 capitalize">sizes:</p>
+            <BoxFilterRadioProduct
+              v-for="option in optionsFilterSizeShoes"
+              name="myFilterSizeShoes"
+              :key="option.value"
+              :label="option.label"
+              :model-value="dataFilterSizeShoes"
+              :value="option.value"
+              @update:modelValue="updateSelectedSizeShoesValue"
             />
           </div>
         </div>
@@ -100,6 +113,7 @@ import Img from '@/components/base/Img.vue'
 import Button from '@/components/base/Button.vue'
 import Icon from '@/components/base/Icon.vue'
 import BoxFilterRadioProduct from '@/components/main/store/shop/BoxFilterRadioProduct.vue'
+import {listOptionsDetailProduct} from '@/data/listOptionDetailProduct.js'
 import { nanoid } from 'nanoid'
 
 import { Swiper, SwiperSlide } from 'swiper/vue'
@@ -107,6 +121,8 @@ import 'swiper/swiper-bundle.css'
 
 const dataFilterSize = ref('')
 const dataFilterColor = ref('')
+const dataFilterSizeShoes = ref('')
+const {optionsFilterSize,optionsFilterColor,optionsFilterSizeShoes} = listOptionsDetailProduct()
 
 const updateSelectedSizeValue = (newValue) => {
   dataFilterSize.value = newValue
@@ -114,6 +130,10 @@ const updateSelectedSizeValue = (newValue) => {
 
 const updateSelectedColorValue = (newValue) => {
   dataFilterColor.value = newValue
+}
+
+const updateSelectedSizeShoesValue = (newValue) => {
+  dataFilterSizeShoes.value = newValue
 }
 
 const props = defineProps({
@@ -174,51 +194,7 @@ const rating = [
   }
 ]
 
-const optionsFilterSize = [
-  {
-    label: 'XS',
-    value: 'XS'
-  },
-  {
-    label: 'S',
-    value: 'S'
-  },
-  {
-    label: 'L',
-    vaLue: 'l'
-  },
-  {
-    label: 'M',
-    value: 'M'
-  },
-  {
-    label: 'XL',
-    value: 'XL'
-  }
-]
 
-const optionsFilterColor = [
-  {
-    label: 'Black',
-    value: 'Black'
-  },
-  {
-    label: 'Red',
-    value: 'Red'
-  },
-  {
-    label: 'White',
-    value: 'White'
-  },
-  {
-    label: 'yellow',
-    value: 'yellow'
-  },
-  {
-    label: 'Gray',
-    value: 'Gray'
-  }
-]
 </script>
 
 <style scoped>
@@ -227,18 +203,18 @@ const optionsFilterColor = [
 }
 
 .box_route {
-  @apply w-full bg-gray-300 px-[10px] py-[10px] rounded-md;
+  @apply w-full bg-gray-300  px-[10px] py-[10px] rounded-md;
 }
 
 .box_route--text {
   @apply text-[18px] font-kanit text-gray-700;
 }
 .box_main {
-  @apply w-full flex items-center;
+  @apply w-full justify-center items-center;
 }
 
 .box_detail {
-  @apply flex-1 flex flex-col gap-[10px]  p-[25px];
+  @apply w-full flex-1 flex flex-col gap-[10px] p-[10px]  lg:p-[25px];
 }
 
 .title {
