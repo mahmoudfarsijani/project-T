@@ -9,7 +9,7 @@ export const useFavBasketStore = defineStore('favBasket',{
         persist() {
             localStorage.setItem('favBasketStore',JSON.stringify(this.basket))
         },
-        addBasket(prodId){
+        addFav(prodId){
             const index = this.basket.indexOf(prodId.id)
             if(index > -1){
                 this.basket.splice(index,1)

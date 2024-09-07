@@ -12,8 +12,8 @@
         <Img :src="product.thumbnail" :alt="product.title" class="box_img--img" />
         <div class="box_img--layout">
           <div class="box__img-layout--btns">
-            <Button tag="button" :is-icon-only="true" @click.stop.prevent="addBasket(product)" :icon="isFav ? 'fill-heart' : 'empty-heart'" />
-            <Button :is-icon-only="true" icon="basket" />
+            <Button tag="button" :is-icon-only="true" @click.stop.prevent="addFav(product)" :icon="isFav ? 'fill-heart' : 'empty-heart'" />
+            <Button :is-icon-only="true" icon="basket" @click.stop.prevent="addBasket(product)"/>
           </div>
         </div>
       </div>
@@ -48,6 +48,9 @@ import Icon from '@/components/base/Icon.vue'
 import Button from '@/components/base/Button.vue'
 
 import { useFavBasketStore } from '@/stores/favBasketStore.js'
+import { useAddBasketStore } from '@/stores/addBasketStore.js'
+
+
 
 const props = defineProps({
   product: object({
@@ -81,10 +84,13 @@ const ratingValue = [
 const productRate = computed(() => props.product.rating.toFixed(1))
 
 // store
-const { addBasket, isAvailable } = useFavBasketStore()
+//for fav list
+const { addFav, isAvailable } = useFavBasketStore()
 const data = useFavBasketStore()
 const isFav = computed(() => useFavBasketStore().isAvailable(props.product))
 const favBasketLength = computed(() => data.lengthBasketFav)
+//for basket list
+const { addBasket} = useAddBasketStore()
 </script>
 
 <style scoped>

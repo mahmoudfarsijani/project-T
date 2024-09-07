@@ -55,7 +55,6 @@ export const useAddBasketStore = defineStore('addbasketStore', {
             this.basket.splice(index,1)
             this.persist()
         }
-
     }
   }
 })

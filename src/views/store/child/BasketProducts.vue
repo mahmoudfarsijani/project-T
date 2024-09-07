@@ -1,8 +1,8 @@
 <template>
   <Container class="min-h-screen">
-    <div v-if="basketList" class="w-full">
+    <div  class="w-full flex gap-[10px] justify-between items-start">
         <!-- table -->
-      <table>
+      <table class="flex-1">
         <thead>
           <tr>
             <th>Products</th>
@@ -12,9 +12,9 @@
             <th>Remove</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody v-if="basketList">
           <tr v-for="item in basketList" :key="item.id">
-            <td class="flex flex-nowrap  items-center gap-[10px]">
+            <td class="flex flex-nowrap  items-center justify-start gap-[10px]">
               <div class="box_img w-[70px] ">
                 <Img :src="item.thumbnail" :alt="item.title" />
               </div>
@@ -49,7 +49,7 @@
                 />
               </div>
             </td>
-            <td >
+            <td>
               <div class=" flex justify-center">
                 <Button :is-icon-only="true" icon="trash" :is-danger="true" @click="removeProduct(item)" />
               </div>
@@ -57,6 +57,9 @@
           </tr>
         </tbody>
       </table>
+      <div class="w-[30%] h-[450px] bg-red-600 box_total">
+
+      </div>
     </div>
   </Container>
 </template>
@@ -83,6 +86,7 @@ th {
   border: 1px solid #ddd;
   text-align: center;
   margin: 0 auto;
+  padding: 10px;
 }
 
 th {
@@ -91,5 +95,7 @@ th {
   text-align: center;
   background-color: #00fa;
   color: white;
+}  tr {
+    height: 60px;
 }
 </style>
