@@ -107,7 +107,7 @@ const { addBasket} = useAddBasketStore()
 }
 
 .box_img--layout {
-  @apply w-full h-0 absolute inset-0  bg-white bg-opacity-95 flex justify-center items-center rounded-lg   duration-700 overflow-hidden;
+  @apply w-full h-0 absolute inset-0 bg-gray-900   bg-opacity-40 dark:bg-opacity-95 flex justify-center items-center rounded-lg   duration-700 overflow-hidden;
 }
 
 .cart_product:hover .box_img--layout {

@@ -2,7 +2,7 @@
   <Container class="min-h-screen">
     <div class="w-full flex gap-[10px] justify-between items-start">
       <!-- table -->
-      <table class="flex-1">
+      <table class="flex-1 rounded-lg overflow-hidden">
         <thead>
           <tr>
             <th>Products</th>
@@ -18,15 +18,15 @@
               <div class="box_img w-[70px]">
                 <Img :src="item.thumbnail" :alt="item.title" />
               </div>
-              <p class="name text-black">
+              <p class="name dark:text-black text-gray-200">
                 {{ item.title }}
               </p>
             </td>
             <td>
-              <p class="text-black">${{ item.price }}</p>
+              <p class="dark:text-black text-gray-200">${{ item.price }}</p>
             </td>
             <td>
-              <p class="text-black">
+              <p class="dark:text-black text-gray-200">
                 {{ item.quantity }}
               </p>
             </td>
@@ -36,15 +36,15 @@
                   tag="button"
                   :is-icon-only="true"
                   icon="minus"
-                  :is-yellow="true"
+                 
                   @click="decrement(item)"
                 />
-                <span class="bg-gray-400 py-[7.8px] px-[15px]">{{ item.quantity }}</span>
+                <span class=" py-[7.8px] px-[15px] dark:text-black text-gray-200">{{ item.quantity }}</span>
                 <Button
                   tag="button"
                   :is-icon-only="true"
                   icon="pluse"
-                  :is-yellow="true"
+             
                   @click="increment(item)"
                 />
               </div>
@@ -54,7 +54,6 @@
                 <Button
                   :is-icon-only="true"
                   icon="trash"
-                  :is-danger="true"
                   @click="removeProduct(item)"
                 />
               </div>
@@ -62,8 +61,15 @@
           </tr>
         </tbody>
       </table>
-      <div class="w-[30%] h-[450px] bg-red-600 box_total">
-        ${{ totalPrice }}
+      <div class="w-[30%]  box_total lg:pt-[100px]  ">
+        <CardSummary   @searchCoupon="findCoupon" class="p-[20px] bg-gray-300 rounded-lg shadow-md">
+          <InputBox :title-btn="'Apply Coupon'" :is-dangered="true" :is-bigged="true" :placeholder="'Enter Coupon'" :is-right="true" :is-left="true" @update:model-value="searchingCoupen"/>
+          <template #totalValue>
+            <p class="text-black font-bold text-blue-700">
+              ${{ totalPrice }}
+            </p>
+          </template>
+        </CardSummary>
       </div>
     </div>
   </Container>
@@ -74,12 +80,20 @@ import { computed, inject } from 'vue'
 import Container from '@/components/base/Container.vue'
 import { useAddBasketStore } from '@/stores/addBasketStore.js'
 import Button from '@/components/base/Button.vue'
+import CardSummary from '@/components/main/store/shop/CardSummary.vue'
+import InputBox from '@/components/main/store/InputBox.vue'
+import { ref } from 'vue'
+ 
 
 const basketList = computed(() => useAddBasketStore().basket)
 const { addBasket, increment, decrement, removeProduct } = useAddBasketStore()
 const totalPrice = computed(() => {
   return basketList.value.reduce((total, prod) => total + prod.price * prod.quantity, 0).toFixed(2)
 })
+const findedCoupon = ref('')
+const searchingCoupen = (data) => {
+  findedCoupon.value = data
+}
 </script>
 
 <style scoped>
@@ -91,7 +105,7 @@ table {
 
 td,
 th {
-  border: 1px solid #ddd;
+
   text-align: center;
   margin: 0 auto;
   padding: 10px;

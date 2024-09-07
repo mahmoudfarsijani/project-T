@@ -16,9 +16,10 @@
           <InputBox
             icons="search"
             :is-absolute="true"
-            :is-bigged="true"
+            :is-bigged="false"
             :is-rounded="true"
             placeholder="Search"
+            @update:model-value="searching"
           />
         </div>
         <div v-if="!isMobile" class="box-servise">
@@ -118,6 +119,11 @@ const isMobile = ref(false)
 const isShowMenu = ref(false)
 const isScroll = ref(false)
 const basketLength = useAddBasketStore()
+const inputValue = ref('')
+
+const searching = (data) => {
+  inputValue.value = data
+}
 
 const resizeHandler = () => {
   isMobile.value = window.innerWidth < '760'
