@@ -1,7 +1,7 @@
 <template>
   <Container class="min-h-screen">
-    <div  class="w-full flex gap-[10px] justify-between items-start">
-        <!-- table -->
+    <div class="w-full flex gap-[10px] justify-between items-start">
+      <!-- table -->
       <table class="flex-1">
         <thead>
           <tr>
@@ -14,8 +14,8 @@
         </thead>
         <tbody v-if="basketList">
           <tr v-for="item in basketList" :key="item.id">
-            <td class="flex flex-nowrap  items-center justify-start gap-[10px]">
-              <div class="box_img w-[70px] ">
+            <td class="flex flex-nowrap items-center justify-start gap-[10px]">
+              <div class="box_img w-[70px]">
                 <Img :src="item.thumbnail" :alt="item.title" />
               </div>
               <p class="name text-black">
@@ -31,7 +31,7 @@
               </p>
             </td>
             <td>
-              <div class="flex flex-nowrap items-center  justify-center">
+              <div class="flex flex-nowrap items-center justify-center">
                 <Button
                   tag="button"
                   :is-icon-only="true"
@@ -50,15 +50,20 @@
               </div>
             </td>
             <td>
-              <div class=" flex justify-center">
-                <Button :is-icon-only="true" icon="trash" :is-danger="true" @click="removeProduct(item)" />
+              <div class="flex justify-center">
+                <Button
+                  :is-icon-only="true"
+                  icon="trash"
+                  :is-danger="true"
+                  @click="removeProduct(item)"
+                />
               </div>
             </td>
           </tr>
         </tbody>
       </table>
       <div class="w-[30%] h-[450px] bg-red-600 box_total">
-
+        ${{ totalPrice }}
       </div>
     </div>
   </Container>
@@ -71,7 +76,10 @@ import { useAddBasketStore } from '@/stores/addBasketStore.js'
 import Button from '@/components/base/Button.vue'
 
 const basketList = computed(() => useAddBasketStore().basket)
-const { addBasket, increment, decrement,removeProduct } = useAddBasketStore()
+const { addBasket, increment, decrement, removeProduct } = useAddBasketStore()
+const totalPrice = computed(() => {
+  return basketList.value.reduce((total, prod) => total + prod.price * prod.quantity, 0).toFixed(2)
+})
 </script>
 
 <style scoped>
@@ -95,7 +103,8 @@ th {
   text-align: center;
   background-color: #00fa;
   color: white;
-}  tr {
-    height: 60px;
+}
+tr {
+  height: 60px;
 }
 </style>
