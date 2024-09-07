@@ -68,7 +68,12 @@
               {{ favBasketLength.lengthBasketFav }}
             </label>
           </div>
-          <Button tag="RouterLink" to="/store/basket-products" :is-icon-only="true" icon="basket" />
+          <div class="flex flex-nowrap items-center">
+            <Button tag="RouterLink" to="/store/basket-products" :is-icon-only="true" icon="basket" />
+            <label  class="text-[13px] bg-blue-300 text-black px-[6px] rounded-full border-black border-[1px]">
+              {{ basketLength.basketLength }}
+            </label>
+          </div>
         </div>
       </nav>
     </Container>
@@ -87,6 +92,7 @@ import FilterCardCatStore from '@/components/main/store/FilterCardCatStore.vue'
 import Container from '@/components/base/Container.vue'
 import InputBox from '@/components/main/store/InputBox.vue'
 import {useFavBasketStore} from '@/stores/favBasketStore.js'
+import { useAddBasketStore } from '@/stores/addBasketStore.js'
 
 // datas fro route-names and title nav
 const routeNames = [
@@ -111,6 +117,7 @@ const routeNames = [
 const isMobile = ref(false)
 const isShowMenu = ref(false)
 const isScroll = ref(false)
+const basketLength = useAddBasketStore()
 
 const resizeHandler = () => {
   isMobile.value = window.innerWidth < '760'

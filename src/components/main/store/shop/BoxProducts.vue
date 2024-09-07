@@ -1,17 +1,16 @@
 <template>
-  <div v-if="product" class="box_total--prodcuts ">
+  <div v-if="product" class="box_total--prodcuts">
     <div class="box_route">
       <p class="box_route--text">
         {{ $route.path }}
       </p>
     </div>
-    {{ product }}
     <div class="box_main flex flex-col lg:flex-row gap-[10px] mt-[25px]">
       <swiper
         :slides-per-view="1"
         :loop="true"
         :autoplay="{ delay: 3000 }"
-        class="w-full lg:w-[45%]  h-[450px] overflow-hidden bg-white rounded-md"
+        class="w-full lg:w-[45%] h-[450px] overflow-hidden bg-white rounded-md"
       >
         <swiper-slide
           v-for="(image, index) in product.images"
@@ -22,7 +21,10 @@
         </swiper-slide>
         <div class="swiper-pagination"></div>
       </swiper>
-      <div v-if="product" class="box_detail h-[500px] lg:h-[450px] overflow-hidden bg-white rounded-md">
+      <div
+        v-if="product"
+        class="box_detail h-[500px] lg:h-[450px] overflow-hidden bg-white rounded-md"
+      >
         <h2 class="title">
           {{ product.title }}
         </h2>
@@ -37,8 +39,11 @@
         <p class="description">
           {{ product.description }}
         </p>
-        <div  class="flex flex-col flex-nowrap gap-[15px] mt-[25px]">
-          <div v-if=" product.category === 'mens-shirts' || product.category ==='womens-dresses'" class="flex flex-nowrap gap-[10px]">
+        <div class="flex flex-col flex-nowrap gap-[15px] mt-[25px]">
+          <div
+            v-if="product.category === 'mens-shirts' || product.category === 'womens-dresses'"
+            class="flex flex-nowrap gap-[10px]"
+          >
             <p class="title_size text-gray-200 dark:text-gray-700 capitalize">sizes:</p>
             <BoxFilterRadioProduct
               v-for="option in optionsFilterSize"
@@ -50,7 +55,14 @@
               @update:modelValue="updateSelectedSizeValue"
             />
           </div>
-          <div v-if="product.category === 'mens-shoes' || product.category ==='mens-shirts' || product.category ==='womens-dresses'" class="flex  gap-[10px]">
+          <div
+            v-if="
+              product.category === 'mens-shoes' ||
+              product.category === 'mens-shirts' ||
+              product.category === 'womens-dresses'
+            "
+            class="flex gap-[10px]"
+          >
             <p class="title_size text-gray-200 dark:text-gray-700 capitalize">colors:</p>
             <BoxFilterRadioProduct
               v-for="option in optionsFilterColor"
@@ -62,7 +74,10 @@
               @update:modelValue="updateSelectedColorValue"
             />
           </div>
-          <div v-if="product.category === 'womens-shoes' || product.category ==='mens-shoes'" class="flex  gap-[10px]">
+          <div
+            v-if="product.category === 'womens-shoes' || product.category === 'mens-shoes'"
+            class="flex gap-[10px]"
+          >
             <p class="title_size text-gray-200 dark:text-gray-700 capitalize">sizes:</p>
             <BoxFilterRadioProduct
               v-for="option in optionsFilterSizeShoes"
@@ -77,9 +92,21 @@
         </div>
         <div class="box_baskets flex flex-nowrap items-center gap-[25px] mt-[15px]">
           <div class="flex flex-nowrap items-center">
-            <Button tag="button" :is-icon-only="true" icon="minus" :is-yellow="true" />
-            <span class="bg-gray-400 py-[7.8px] px-[15px]">0</span>
-            <Button tag="button" :is-icon-only="true" icon="pluse" :is-yellow="true" />
+            <Button
+              tag="button"
+              :is-icon-only="true"
+              icon="minus"
+              :is-yellow="true"
+              @click="decrement(product)"
+            />
+            <span class="bg-gray-400 py-[7.8px] px-[15px]">{{quantityNumber}}</span>
+            <Button
+              tag="button"
+              :is-icon-only="true"
+              icon="pluse"
+              :is-yellow="true"
+              @click="increment(product)"
+            />
           </div>
           <Button
             :is-icon-only="false"
@@ -87,18 +114,17 @@
             :is-primary="true"
             :is-rounded-sm="true"
             class="text-black"
+            @click="addBasket(product)"
           >
             Add To Cart
           </Button>
         </div>
         <div class="box_share flex flex-nowrap gap-[10px] items-center">
-          <p class="share_title text-gray-200 dark:text-gray-700">
-            Share on:
-          </p>
-          <div class="btn_social flex  flex-nowrap items-center gap-[10px]">
-            <Button :is-icon-only="true" icon="instagram"/>
-            <Button :is-icon-only="true" icon="twitter"/>
-            <Button :is-icon-only="true" icon="gmail"/>
+          <p class="share_title text-gray-200 dark:text-gray-700">Share on:</p>
+          <div class="btn_social flex flex-nowrap items-center gap-[10px]">
+            <Button :is-icon-only="true" icon="instagram" />
+            <Button :is-icon-only="true" icon="twitter" />
+            <Button :is-icon-only="true" icon="gmail" />
           </div>
         </div>
       </div>
@@ -113,7 +139,8 @@ import Img from '@/components/base/Img.vue'
 import Button from '@/components/base/Button.vue'
 import Icon from '@/components/base/Icon.vue'
 import BoxFilterRadioProduct from '@/components/main/store/shop/BoxFilterRadioProduct.vue'
-import {listOptionsDetailProduct} from '@/data/listOptionDetailProduct.js'
+import { listOptionsDetailProduct } from '@/data/listOptionDetailProduct.js'
+import { useAddBasketStore } from '@/stores/addBasketStore.js'
 import { nanoid } from 'nanoid'
 
 import { Swiper, SwiperSlide } from 'swiper/vue'
@@ -122,7 +149,18 @@ import 'swiper/swiper-bundle.css'
 const dataFilterSize = ref('')
 const dataFilterColor = ref('')
 const dataFilterSizeShoes = ref('')
-const {optionsFilterSize,optionsFilterColor,optionsFilterSizeShoes} = listOptionsDetailProduct()
+const { optionsFilterSize, optionsFilterColor, optionsFilterSizeShoes } = listOptionsDetailProduct()
+// stores
+const { addBasket, increment, decrement } = useAddBasketStore()
+const basketList = computed(() => useAddBasketStore().basket)
+
+const quantityNumber = computed(() => {
+  if(props.product.quantity){
+    return props.product.quantity
+  } 
+  return '0'
+})
+
 
 const updateSelectedSizeValue = (newValue) => {
   dataFilterSize.value = newValue
@@ -167,7 +205,8 @@ const props = defineProps({
       qrCode: string()
     }),
     images: array(),
-    thumbnail: string()
+    thumbnail: string(),
+    quantity: number()
   })
 })
 
@@ -193,8 +232,6 @@ const rating = [
     rate: 5
   }
 ]
-
-
 </script>
 
 <style scoped>
