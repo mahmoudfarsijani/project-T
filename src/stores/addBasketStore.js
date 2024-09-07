@@ -48,6 +48,14 @@ export const useAddBasketStore = defineStore('addbasketStore', {
           this.persist()
         }
       }
+    },
+    removeProduct(prodcutId){
+        const index = this.basket.findIndex(item => item.id === prodcutId.id)
+        if(index > -1) {
+            this.basket.splice(index,1)
+            this.persist()
+        }
+
     }
   }
 })

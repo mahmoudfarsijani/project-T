@@ -133,7 +133,7 @@
 </template>
 
 <script setup>
-import { defineProps, ref, computed } from 'vue'
+import { defineProps, ref, computed,provide } from 'vue'
 import { string, number, shape, object, array } from 'vue-types'
 import Img from '@/components/base/Img.vue'
 import Button from '@/components/base/Button.vue'
@@ -155,11 +155,12 @@ const { addBasket, increment, decrement } = useAddBasketStore()
 const basketList = computed(() => useAddBasketStore().basket)
 
 const quantityNumber = computed(() => {
-  if(props.product.quantity){
-    return props.product.quantity
-  } 
-  return '0'
+  const item = basketList.value.find((prod) => prod.id === props.product.id)
+
+  return item ? item.quantity : '0'
 })
+
+
 
 
 const updateSelectedSizeValue = (newValue) => {
