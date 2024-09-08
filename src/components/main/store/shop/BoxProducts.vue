@@ -5,6 +5,7 @@
         {{ $route.path }}
       </p>
     </div>
+    <!-- این بعدا کامپوننت میشه -->
     <div class="box_main flex flex-col lg:flex-row gap-[10px] mt-[25px]">
       <swiper
         :slides-per-view="1"
@@ -65,7 +66,7 @@
           >
             <p class="title_size text-gray-200 dark:text-gray-700 capitalize">colors:</p>
             <BoxFilterRadioProduct
-            type="radio"
+              type="radio"
               v-for="option in optionsFilterColor"
               name="myFilterColor"
               :key="option.value"
@@ -101,7 +102,7 @@
               :is-yellow="true"
               @click="decrement(product)"
             />
-            <span class="bg-gray-400 py-[7.8px] px-[15px]">{{quantityNumber}}</span>
+            <span class="bg-gray-400 py-[7.8px] px-[15px]">{{ quantityNumber }}</span>
             <Button
               tag="button"
               :is-icon-only="true"
@@ -129,13 +130,19 @@
             <Button :is-icon-only="true" icon="gmail" />
           </div>
         </div>
+        <div>
+          <v-chip class="ma-2" color="pink" label>
+            Tags
+          </v-chip>
+          <TagProducts v-for="(item, index) in product.tags" :key="index" :label="item" />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { defineProps, ref, computed,provide } from 'vue'
+import { defineProps, ref, computed, provide } from 'vue'
 import { string, number, shape, object, array } from 'vue-types'
 import Img from '@/components/base/Img.vue'
 import Button from '@/components/base/Button.vue'
@@ -144,6 +151,7 @@ import BoxFilterRadioProduct from '@/components/main/store/shop/BoxFilterRadioPr
 import { listOptionsDetailProduct } from '@/data/listOptionDetailProduct.js'
 import { useAddBasketStore } from '@/stores/addBasketStore.js'
 import { nanoid } from 'nanoid'
+import TagProducts from '@/components/main/store/TagProducts.vue'
 
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/swiper-bundle.css'
@@ -161,9 +169,6 @@ const quantityNumber = computed(() => {
 
   return item ? item.quantity : '0'
 })
-
-
-
 
 const updateSelectedSizeValue = (newValue) => {
   dataFilterSize.value = newValue
