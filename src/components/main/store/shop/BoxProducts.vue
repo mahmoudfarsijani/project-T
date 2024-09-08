@@ -65,6 +65,7 @@
           >
             <p class="title_size text-gray-200 dark:text-gray-700 capitalize">colors:</p>
             <BoxFilterRadioProduct
+            type="radio"
               v-for="option in optionsFilterColor"
               name="myFilterColor"
               :key="option.value"
@@ -81,6 +82,7 @@
             <p class="title_size text-gray-200 dark:text-gray-700 capitalize">sizes:</p>
             <BoxFilterRadioProduct
               v-for="option in optionsFilterSizeShoes"
+              type="radio"
               name="myFilterSizeShoes"
               :key="option.value"
               :label="option.label"
