@@ -14,6 +14,6 @@ import { ref } from 'vue'
 
 <style scoped>
     .aside {
-        @apply w-full lg:w-[20%] min-w-[300px] h-[500px] bg-purple-600
+        @apply w-full lg:w-[20%] min-w-[300px] h-[500px] 
     }
 </style>

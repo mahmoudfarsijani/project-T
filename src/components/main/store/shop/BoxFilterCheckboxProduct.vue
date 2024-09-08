@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label>
+    <label class="flex flex-nowrap items-center gap-[8px] capitalize font-suns text-gray-200 dark:text-slate-600">
       <input
         type="checkbox"
         :value="value"

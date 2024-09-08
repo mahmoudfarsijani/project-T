@@ -1,9 +1,9 @@
 <template>
   <Main class="pt-[200px]">
     <Container class="flex flex-wrap lg:flex-nowrap gap-[20px]">
-      <Aside>
-        <div>
-          <h3 class="">Filter by color</h3>
+      <Aside class="flex flex-col gap-[15px]">
+        <div class="w-full bg-slate-600 dark:bg-gray-300  p-[15px] rounded-md">
+          <h3 class="font-kanit text-[25px] capitalize text-gray-200 dark:text-slate-600">Filter by category</h3>
           <div>
             <BoxFilterCheckBoxProduct
               value="All"
@@ -21,16 +21,15 @@
             />
           </div>
         </div>
-        <div>
-          <h3 class="">Filter by price</h3>
+        <div class="w-full bg-slate-600 dark:bg-gray-300  p-[15px] rounded-md">
+          <h3 class="font-kanit text-[25px] capitalize text-gray-200 dark:text-slate-600">Filter by price</h3>
           <div>
             <!-- filter price -->
-            <label v-for="range in priceRanges" :key="range.label">
-              <input type="checkbox" :value="range" v-model="selectedPriceRanges" />
+            <label v-for="range in priceRanges" :key="range.label"  class="flex flex-nowrap items-center gap-[8px] capitalize font-suns whitespace-nowrap text-gray-200 dark:text-slate-600">
+              <input type="checkbox" :value="range" v-model="selectedPriceRanges"/>
               {{ range.label }}
             </label>
           </div>
-          {{ selectedPriceRanges }}
         </div>
       </Aside>
       <Main>
