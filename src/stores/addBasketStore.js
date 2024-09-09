@@ -26,7 +26,10 @@ export const useAddBasketStore = defineStore('addbasketStore', {
         this.basket.push(prodcutId)
         prodcutId.quantity = 1
         this.persist()
-        useToast().success('add to basket')
+        useToast().success('add to basket',{
+          position:'top-right',
+          duration:'5000'
+        })
       }
     },
     increment(prodcutId) {
@@ -62,7 +65,12 @@ export const useAddBasketStore = defineStore('addbasketStore', {
         if(index > -1) {
             this.basket.splice(index,1)
             this.persist()
-            useToast().warning('remove from basket')
+            useToast().open({
+              message:'remove from basket',
+              type:'error',
+              position:'top-right',
+              duration:'8000'
+            })
         }
     }
   }
