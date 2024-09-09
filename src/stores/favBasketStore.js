@@ -1,4 +1,6 @@
 import { defineStore } from "pinia";
+import {useToast} from 'vue-toast-notification';
+import 'vue-toast-notification/dist/theme-sugar.css';
 
 
 export const useFavBasketStore = defineStore('favBasket',{
@@ -14,9 +16,11 @@ export const useFavBasketStore = defineStore('favBasket',{
             if(index > -1){
                 this.basket.splice(index,1)
                 this.persist()
+                
             } else {
                 this.basket.push(prodId)
                 this.persist()
+                useToast().success('add to fav list')
             }
         },
         isAvailable(prod){
