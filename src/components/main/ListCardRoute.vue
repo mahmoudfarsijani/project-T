@@ -1,13 +1,13 @@
 <template>
-  <Row tag="ul" :is-no-wrap="true" class="w-full">
+  <Row tag="ul" :is-no-wrap="true" class="w-full bg-lime-400 py-[50px]">
     <swiper
       :slides-per-view="isMobile ? 1 : 3"
       :space-between="40"
-      @swiper="onSwiper"
+ 
       loop="true"
       @slideChange="onSlideChange"
     >
-      <SwiperSlide v-for="item in dataCards" :key="item.id" class="swiper--slide">
+      <SwiperSlide v-for="item in dataCards" :key="item.id" class=" swiper--slide">
         <Card tag="li" class="cart--li">
           <template #header>
             <h2 class="title ">
@@ -108,9 +108,9 @@ onUnmounted(() => {
 
 <style scoped>
 .swiper--slide {
-  @apply w-[40%]  min-w-[350px] 
+  @apply w-[40%] h-[380px] py-[15px]  min-w-[350px] 
   border border-blue-700 rounded-md  
-  px-[20px] py-[15px]  hover:bg-blue-700
+  px-[20px]    hover:bg-blue-700
   overflow-hidden duration-700 transition-all hover:shadow-sm
    hover:shadow-blue-600 dark:border-blue-400 ;
 }

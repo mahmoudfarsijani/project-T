@@ -18,8 +18,8 @@ provide('changeColor',isChange.value)
 </script>
 
 <template>
-  <Main class="flex flex-col justify-center gap-[45px] px-[5px]">
-    <Container tag="section">
+  <Main class="flex flex-col justify-center gap-[45px] px-[5px] bg-red-500">
+    <Container tag="section" >
       <div class="box-home w-full flex justify-between items-center">
         <div>
           <h1 class="title font-Matemasie">-Links for you-</h1>
