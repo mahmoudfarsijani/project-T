@@ -22,6 +22,7 @@
               @change="handleCategoryChange"
             />
           </div>
+          {{ selectedCategories }}
         </div>
         <div class="w-full bg-slate-600 dark:bg-gray-300 p-[15px] rounded-md">
           <h3 class="font-kanit text-[25px] capitalize text-gray-200 dark:text-slate-600">
@@ -67,11 +68,15 @@ import Container from '@/components/base/Container.vue'
 import Aside from '@/components/base/Aside.vue'
 import RowGrid from '@/components/base/RowGrid.vue'
 import CardProduct from '@/components/main/store/shop/CardProduct.vue'
-import { ref, computed } from 'vue'
+import { ref, computed,watch } from 'vue'
+import { useRouter,useRoute } from 'vue-router'
 import BoxFilterCheckBoxProduct from '@/components/main/store/shop/BoxFilterCheckBoxProduct.vue'
+import { onMounted } from 'vue'
 
 // fetch -----------------
 const { dataStore, errorStore, isLoadingStore } = useStoreFetch()
+const router = useRouter()
+const route = useRoute()
 
 // data filters -------
 const cat = ['beauty', 'fragrances', 'furniture', 'groceries']
@@ -82,7 +87,7 @@ const priceRanges = [
 ]
 
 // for categories ----------
-const selectedCategories = ref(['All'])
+const selectedCategories = ref(route.query.category || 'All')
 const handleAllChange = () => {
   if (selectedCategories.value.includes('All')) {
     selectedCategories.value = ['All']
@@ -93,6 +98,12 @@ const handleCategoryChange = () => {
   if (index !== -1) {
     selectedCategories.value.splice(index, 1)
   }
+  router.push({
+    query: {
+      ...route.query,
+      category:selectedCategories.value
+    }
+  })
 }
 
 //for prices ----------
@@ -119,6 +130,15 @@ const filterColred = computed(() => {
   }
   return allProduct
 })
+
+watch(() => route.query.category,(n) => {
+  selectedCategories.value = n || 'All'
+})
+
+onMounted(() => {
+  selectedCategories.value = route.query.category || "All"
+})
+
 </script>
 <style scoped>
 .list-grid {
