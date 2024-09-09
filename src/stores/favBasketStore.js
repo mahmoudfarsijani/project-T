@@ -20,7 +20,10 @@ export const useFavBasketStore = defineStore('favBasket',{
             } else {
                 this.basket.push(prodId)
                 this.persist()
-                useToast().success('add to fav list')
+                useToast().success('add to fav list',{
+                    position:'top-right',
+                    duration:'5000'
+                })
             }
         },
         isAvailable(prod){
