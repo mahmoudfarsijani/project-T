@@ -7,12 +7,12 @@
             Filter by category
           </h3>
           <div>
-            <BoxFilterCheckBoxProduct
+            <!-- <BoxFilterCheckBoxProduct
               value="All"
               label="All"
               v-model="selectedCategories"
               @change="handleAllChange"
-            />
+            /> -->
             <BoxFilterCheckBoxProduct
               v-for="category in cat"
               :key="category"
@@ -68,8 +68,8 @@ import Container from '@/components/base/Container.vue'
 import Aside from '@/components/base/Aside.vue'
 import RowGrid from '@/components/base/RowGrid.vue'
 import CardProduct from '@/components/main/store/shop/CardProduct.vue'
-import { ref, computed,watch } from 'vue'
-import { useRouter,useRoute } from 'vue-router'
+import { ref, computed, watch } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import BoxFilterCheckBoxProduct from '@/components/main/store/shop/BoxFilterCheckBoxProduct.vue'
 import { onMounted } from 'vue'
 
@@ -87,21 +87,21 @@ const priceRanges = [
 ]
 
 // for categories ----------
-const selectedCategories = ref(route.query.category || 'All')
-const handleAllChange = () => {
-  if (selectedCategories.value.includes('All')) {
-    selectedCategories.value = ['All']
-  }
-}
+const selectedCategories = ref(route.query.category || '')
+// const handleAllChange = () => {
+//   if (selectedCategories.value.includes('All')) {
+//     selectedCategories.value = ['All']
+//   }
+// }
 const handleCategoryChange = () => {
-  const index = selectedCategories.value.indexOf('All')
-  if (index !== -1) {
-    selectedCategories.value.splice(index, 1)
-  }
+  // const index = selectedCategories.value.indexOf('All')
+  // if (index !== -1) {
+  //   selectedCategories.value.splice(index, 1)
+  // }
   router.push({
     query: {
       ...route.query,
-      category:selectedCategories.value
+      category: selectedCategories.value
     }
   })
 }
@@ -111,7 +111,7 @@ const selectedPriceRanges = ref([])
 
 const filterColred = computed(() => {
   let allProduct = dataStore.value.products
-  if (selectedCategories.value.includes('All')) {
+  if (!selectedCategories.value) {
     return allProduct
   }
 
@@ -131,14 +131,16 @@ const filterColred = computed(() => {
   return allProduct
 })
 
-watch(() => route.query.category,(n) => {
-  selectedCategories.value = n || 'All'
-})
+watch(
+  () => route.query.category,
+  (n) => {
+    selectedCategories.value = n || ''
+  }
+)
 
 onMounted(() => {
-  selectedCategories.value = route.query.category || "All"
+  selectedCategories.value = route.query.category || ''
 })
-
 </script>
 <style scoped>
 .list-grid {
