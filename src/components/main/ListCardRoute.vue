@@ -1,5 +1,5 @@
 <template>
-  <Row tag="ul" :is-no-wrap="true" class="w-full bg-lime-400 py-[50px]">
+  <Row tag="ul" :is-no-wrap="true" class="w-full  py-[50px]">
     <swiper
       :slides-per-view="isMobile ? 1 : 3"
       :space-between="40"
