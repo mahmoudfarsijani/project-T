@@ -9,7 +9,7 @@
       <div class="box_contact">
         <div class="flex flex-nowrap items-center gap-[15px]">
           <Icon name="loc"/>
-          <span>123 Street, New York, USA</span>
+          <span class="whitespace-nowrap">123 Street, New York, USA</span>
         </div>
         <div class="flex flex-nowrap items-center gap-[15px]">
           <Icon name="gmail"/>
@@ -17,7 +17,7 @@
         </div>
         <div class="flex flex-nowrap items-center gap-[15px]">
           <Icon name="phone"/>
-          <span>+012 345 67890</span>
+          <span class="whitespace-nowrap">+012 345 67890</span>
         </div>
       </div>
     </div>
@@ -33,7 +33,7 @@
       <h3 class="title">Newsletter</h3>
       <p class="subtitle">Duo stet tempor ipsum sit amet magna ipsum tempor est</p>
       <div class="box_email">
-        <InputBox :is-icon-only="false" title-btn="sign up" :is-dangered="true" :is-left="true" :is-right="true"/>
+        <InputBox :is-icon-only="false" title-btn="sign up" :is-dangered="true" :is-left="true" :is-right="true" :is-bigged="true"/>
       </div>
       <h4 class="follow_title">
         follow us
@@ -57,15 +57,18 @@ const { dataFooter,dataButton } = listDataFooter()
 
 <style scoped>
 .box_footer {
-  @apply w-full flex justify-between;
+  @apply w-full  flex smm:flex-col  md:flex-row smm:flex-wrap lg:flex-nowrap   lg:justify-between;
 }
 
 .box_1 {
-    @apply w-[35%] flex flex-col gap-[25px]
+    @apply smm:w-full md:w-[35%] flex flex-col gap-[25px]
 }
 
 .title {
     @apply font-kanit text-[22px]
+}
+.subtitle {
+  @apply text-justify w-full 
 }
 
 .box_contact {

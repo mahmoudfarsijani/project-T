@@ -1,5 +1,5 @@
 <template>
-  <footer class="w-full h-[350px] mt-[80px] bg-gray-600 py-[25px]">
+  <footer class="w-full  mt-[80px] bg-gray-600 py-[25px]">
     <Container>
       <BoxFooter />
     </Container>
