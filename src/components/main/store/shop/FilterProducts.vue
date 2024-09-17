@@ -1,6 +1,6 @@
 <template>
   <Main class="pt-[200px]">
-    <Container class="flex flex-wrap lg:flex-nowrap gap-[20px]">
+    <Container class="flex smm:flex-wrap lg:flex-nowrap  gap-[20px]">
       <Aside class="flex flex-col gap-[15px]">
         <div class="w-full bg-slate-600 dark:bg-gray-300 p-[15px] rounded-md">
           <h3 class="font-kanit text-[25px] capitalize text-gray-200 dark:text-slate-600">
@@ -22,7 +22,6 @@
               @change="handleCategoryChange"
             />
           </div>
-          {{ selectedCategories }}
         </div>
         <div class="w-full bg-slate-600 dark:bg-gray-300 p-[15px] rounded-md">
           <h3 class="font-kanit text-[25px] capitalize text-gray-200 dark:text-slate-600">
