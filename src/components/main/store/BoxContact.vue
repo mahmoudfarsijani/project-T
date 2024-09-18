@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full flex flex-nowrap gap-[20px]">
+  <div class="w-full flex flex-nowrap gap-[20px] pt-[40px]">
     <FormContact class="flex-1"/>
     <InfoContact class="flex-1"/>
   </div>

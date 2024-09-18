@@ -10,7 +10,7 @@
             <input type="text" class="box__input--style" placeholder="Subject">
         </div>
         <div class="box__input">
-            <textarea placeholder="Message"></textarea>
+            <textarea placeholder="Message" class="w-full bg-gray-300 p-[10px] resize-none h-[200px]"></textarea>
         </div>
         <Button tag="button" type="submit" :is-icon-only="false" :is-yellow="true">
             send message
@@ -26,7 +26,7 @@
 <style scoped>
 
 .box {
-    @apply bg-gray-100 p-[20px]
+    @apply bg-gray-100 p-[20px] max-h-[450px] overflow-hidden
 }
 
 .box__input{

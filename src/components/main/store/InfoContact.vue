@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col justify-start gap-[20px] bg-gray-100">
+    <div class="flex flex-col justify-start gap-[20px] bg-gray-100 max-h-[450px]">
         <div class="p-[20px]">
             <iframe width="100%" height="250px" loading="lazy" :src="googleMap"></iframe>
         </div>
