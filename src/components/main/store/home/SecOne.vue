@@ -32,7 +32,7 @@
           </template>
         </CardLayout>
       </div>
-      <div class="image-sec-two flex flex-row lg:flex-col gap-[20px] w-[100%] lg:w-[28%] ">
+      <div class="image-sec-two flex  smm:flex-row lg:flex-col gap-[20px] w-[100%] lg:w-[28%] ">
         <CardLayout
           v-for="item in dataCard"
           :key="item.id"
