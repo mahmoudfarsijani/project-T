@@ -86,7 +86,11 @@ const router = createRouter({
       path: '/resturant',
       name: 'resturant',
       alias: '/resturants',
-      component: () => import('@/views/resturant/Resturant.vue'),
+      components: {
+        default:  () => import('@/views/resturant/Resturant.vue'),
+        headerResturant: () => import('@/components/main/resturant/HeaderResturant.vue'),
+        footerResturant: () => import('@/components/main/resturant/FooterResturant.vue')
+      },
       meta: { title: 'Resturant', requiresAuth: false }
     },
     {

@@ -1,8 +1,10 @@
 <template>
   <Wrapper>
     <RouterView name="headerStore"/>
+    <RouterView name="headerResturant"/>
     <RouterView :key="$route.path"/>
     <RouterView name="footerStore"/>
+    <RouterView name="footerResturant"/>
     <BtnTop/>
   </Wrapper>
 </template>
