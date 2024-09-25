@@ -86,12 +86,46 @@ const router = createRouter({
       path: '/resturant',
       name: 'resturant',
       alias: '/resturants',
+      redirect:'/resturant/home',
       components: {
         default:  () => import('@/views/resturant/Resturant.vue'),
         headerResturant: () => import('@/components/main/resturant/HeaderResturant.vue'),
         footerResturant: () => import('@/components/main/resturant/FooterResturant.vue')
       },
-      meta: { title: 'Resturant', requiresAuth: false }
+      meta: { title: 'Resturant', requiresAuth: false },
+      children: [
+        // default
+        {
+          path:'',
+          name:'home-rest',
+          component:() => import('@/views/resturant/child/HomeRest.vue')
+        },
+        {
+          path:'/resturant/home',
+          name:'home-rest',
+          component: () => import('@/views/resturant/child/HomeRest.vue')
+        },
+        {
+          path:'/resturant/about',
+          name:'about-rest',
+          component: () => import('@/views/resturant/child/AboutRest.vue')
+        },
+        {
+          path:'/resturant/contact',
+          name:'contact-rest',
+          component: () => import('@/views/resturant/child/ContactRest.vue')
+        },
+        {
+          path:'/resturant/menu',
+          name:'menu-rest',
+          component: () => import('@/views/resturant/child/MenuRest.vue')
+        },
+        {
+          path:'/resturant/pages',
+          name:'pages-rest',
+          component: () => import('@/views/resturant/child/PagesRest.vue')
+        }
+      ]
     },
     {
       path: '/movie',

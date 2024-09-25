@@ -1,9 +1,17 @@
 <template>
   <Wrapper>
+    <!-- hedare-store -->
     <RouterView name="headerStore"/>
+    <!-- header-resturant -->
     <RouterView name="headerResturant"/>
+
+
     <RouterView :key="$route.path"/>
+
+    
+    <!-- footer-store -->
     <RouterView name="footerStore"/>
+    <!-- footer-resturant -->
     <RouterView name="footerResturant"/>
     <BtnTop/>
   </Wrapper>
