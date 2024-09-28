@@ -1,13 +1,13 @@
 <template>
-  <header class="w-full flex flex-nowrap bg-purple-600 py-[15px]">
-    <Container class="flex flex-nowrap justify-between">
+  <header class="w-full flex flex-nowrap py-[20px] fixed top-0 items-center z-ind">
+    <Container class="flex flex-nowrap justify-between items-center">
       <label>
-        <RouterLink to="/resturant"> koppee </RouterLink>
+        <RouterLink to="/" class="text-[25px] uppercase font-Archivo text-white"> koppee </RouterLink>
       </label>
       <nav>
-        <Row tag="ul" class="gap-[10px]">
+        <Row tag="ul" class="gap-[15px]">
           <li v-for="item in listNav" :key="item.id">
-            <RouterLink :to="{ name: item.name }" class="text-gray-400 dark:text-white">
+            <RouterLink :to="{ name: item.name }" class="list-item">
               {{ item.label }}
             </RouterLink>
           </li>
@@ -50,3 +50,14 @@ const listNav = [
   }
 ]
 </script>
+
+
+<style scoped>
+  .list-item {
+    @apply text-white capitalize
+  }
+
+  .list-item.active-nav {
+    @apply text-slate-800
+  }
+</style>
