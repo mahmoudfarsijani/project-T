@@ -1,5 +1,5 @@
 <template>
     <div>
-        footer
+        categories
     </div>
 </template>

@@ -90,7 +90,6 @@ const router = createRouter({
       components: {
         default:  () => import('@/views/resturant/Resturant.vue'),
         headerResturant: () => import('@/components/main/resturant/HeaderResturant.vue'),
-        footerResturant: () => import('@/components/main/resturant/FooterResturant.vue')
       },
       meta: { title: 'Resturant', requiresAuth: false },
       children: [
@@ -124,6 +123,21 @@ const router = createRouter({
           path:'/resturant/pages',
           name:'pages-rest',
           component: () => import('@/views/resturant/child/PagesRest.vue')
+        },
+        {
+          path:'/resturant/categories',
+          name:'categories-rest',
+          component: () => import('@/views/resturant/child/pages/CategoriesRest.vue')
+        },
+        {
+          path:'/resturant/country',
+          name:'country-rest',
+          component: () => import('@/views/resturant/child/pages/CountryRest.vue')
+        },
+        {
+          path:'/resturant/search',
+          name:'categories-rest',
+          component: () => import('@/views/resturant/child/pages/SearchBoxRest.vue')
         }
       ]
     },
