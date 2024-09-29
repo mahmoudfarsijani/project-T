@@ -1,5 +1,5 @@
 <template>
-  <header class="w-full flex flex-nowrap py-[20px] fixed top-0 items-center z-ind">
+  <header class="w-full flex flex-nowrap py-[20px] fixed top-0 items-center ">
     <Container class="flex flex-nowrap justify-between items-center">
       <label>
         <RouterLink to="/" class="text-[25px] uppercase font-Archivo text-white"> koppee </RouterLink>
