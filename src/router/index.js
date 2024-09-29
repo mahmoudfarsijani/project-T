@@ -138,6 +138,11 @@ const router = createRouter({
           path:'/resturant/search',
           name:'categories-rest',
           component: () => import('@/views/resturant/child/pages/SearchBoxRest.vue')
+        },
+        {
+          path:'/resturant/detailmeal/:id',
+          name:'detail-meal',
+          component: () => import('@/views/resturant/child/DetailMeals.vue')
         }
       ]
     },

@@ -10,6 +10,6 @@ import Main from '@/components/base/Main.vue'
 
 <style scoped>
   .mains {
-    @apply bg-red-500
+    @apply bg-slate-800
   }
 </style>

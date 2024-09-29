@@ -1,7 +1,7 @@
 <template>
   <div class="input_box" :class="[`${isBigged ? 'w-full' : 'w-[450px]'}`]">
     <input :type="type" @input="enterHandler" v-model="inputValue" :placeholder="placeholder" :class="['inputed',`inputed--${isBigged ? 'big' : 'small'}`,`inputed--${isRounded ? 'rounded' : ''}`,`inputed--${isLeft ? 'left' : ''}`]"/>
-    <Button :is-icon-only="isTitle"  :icon="icons" :is-danger="isDangered" :is-right-rounded="isRight" :class="{'absolute right-[0px] top-[2px] ':isAbsolute}">
+    <Button :is-icon-only="isTitle"  :icon="icons" :is-danger="isDangered" :is-right-rounded="isRight" :class="{'absolute right-[0px  top-[2px] ':isAbsolute,'bg-gray-200':isWhite}">
         {{ titleBtn }}
     </Button>
   </div>
@@ -25,6 +25,7 @@ import Button from '@/components/base/Button.vue'
     isBigged: bool().def(false),
     isRounded: bool().def(false),
     isLeft:bool().def(false),
+    isWhite:bool().def(false)
 })
 
 const emits = defineEmits(['update:modelValue']);
