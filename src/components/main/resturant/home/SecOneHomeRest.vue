@@ -12,7 +12,7 @@
       <div class="box-img max-w-[950px] flex justify-center pt-[50px] mx-auto">
         <Img src="/public/icon/main.png" alt="" class="w-[90%]" />
       </div>
-      <Row tag="ul" class="smm:gap-[30px] md:gap-[10px] smm:justify-center md:justify-center lg:justify-between">
+      <Row tag="ul" class=" smm:justify-center md:justify-center lg:justify-between items-center">
         <CardPages v-for="item in listItem" :key="item.id" :list-item="item" />
       </Row>
     </div>

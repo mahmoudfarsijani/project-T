@@ -23,7 +23,7 @@ const props = defineProps({
 
 <style scoped>
   .card__page {
-    @apply smm:p-[6px]  md:p-[5px] min-w-[320px] transition-all border-black border-b-[0px] hover:border-b-[15px] duration-300 overflow-hidden   relative 
+    @apply smm:p-[6px]  md:p-[5px] flex-1 transition-all border-black border-b-[0px]   duration-300 overflow-hidden   relative 
   }
 
   .body__par {

@@ -1084,8 +1084,8 @@
   <g v-else-if="name === 'category'">
     <svg
       fill="#fff"
-      width="30px"
-      height="30px"
+      :width="size + 'px'"
+      :height="size + 'px'"
       viewBox="0 0 64 64"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
@@ -1205,8 +1205,8 @@
   <!-- country -->
   <g v-else-if="name === 'country'">
     <svg
-      width="35px"
-      height="35px"
+      :width="size + 'px'"
+      :height="size + 'px'"
       viewBox="0 0 100 100"
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -1226,8 +1226,8 @@
   <g v-else-if="name === 'search-box'">
     <svg
       fill="#fff"
-      height="35px"
-      width="35px"
+      :height="size + 'px'"
+      :width="size + 'px'"
       version="1.1"
       id="Capa_1"
       xmlns="http://www.w3.org/2000/svg"
@@ -1269,12 +1269,30 @@
       </g>
     </svg>
   </g>
+
+  <!-- hamburger-right -->
+  <g v-else-if="name === 'hamburger-right'">
+    <svg
+      width="25px"
+      height="25px"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M4 5C3.44772 5 3 5.44772 3 6C3 6.55228 3.44772 7 4 7H20C20.5523 7 21 6.55228 21 6C21 5.44772 20.5523 5 20 5H4ZM7 12C7 11.4477 7.44772 11 8 11H20C20.5523 11 21 11.4477 21 12C21 12.5523 20.5523 13 20 13H8C7.44772 13 7 12.5523 7 12ZM13 18C13 17.4477 13.4477 17 14 17H20C20.5523 17 21 17.4477 21 18C21 18.5523 20.5523 19 20 19H14C13.4477 19 13 18.5523 13 18Z"
+        fill="#fff"
+      />
+    </svg>
+  </g>
 </template>
 
 <script setup>
-import { defineProps, computed } from 'vue'
+import { defineProps, computed, onMounted, onUnmounted, ref } from 'vue'
 import { string } from 'vue-types'
-import { useDark } from '@vueuse/core'
+import { useDark, useEventListener } from '@vueuse/core'
 
 const isDark = useDark()
 
@@ -1283,4 +1301,24 @@ defineProps({
 })
 
 const iconStroke = computed(() => (isDark.value ? '#000' : '#fff'))
+const size = ref(30)
+
+const sizeHandler = () => {
+  if (window.innerWidth < 767) {
+    size.value = 20
+  } else {
+    size.value = 30
+  }
+}
+
+useEventListener(window, 'resize', sizeHandler)
+
+onMounted(() => {
+  useEventListener(window, 'resize', sizeHandler)
+})
+
+onUnmounted(() => {
+  useEventListener(window, 'resize', sizeHandler)
+  delete useEventListener(window, 'resize', sizeHandler)
+})
 </script>
