@@ -1,7 +1,7 @@
 <template>
   <div class="w-[100%]  md:max-w-[350px] lg:max-w-[550px] mx-auto">
     <InputBox @update:modelValue="searching" icons="search" :is-left="true" :is-title="false" :is-white="true" :is-right="true" :is-bigged="true"/>
-    <Row tag="ul" v-if="dataInput.length > 2" :is-col="true" class="bg-gray-200 mt-[-4px] py-[10px] px-[10px] rounded-b-md gap-[20px]">
+    <Row tag="ul" v-if="dataInput.length > 2" :is-col="true" :is-no-wrap="true"  class="bg-gray-200 mt-[-4px] py-[10px] px-[8px] rounded-b-md gap-[20px] overflow-y-auto  max-h-[350px] justify-start items-start">
        <CardFindMeal v-for="item in datas" :key="item.idMeal" :dataFinded="item"/>
     </Row>
   </div>

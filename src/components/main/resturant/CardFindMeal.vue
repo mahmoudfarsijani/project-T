@@ -4,7 +4,7 @@
     tag="RouterLink"
     :to="`/resturant/detailmeal/${dataFinded.idMeal}`"
     :is-row="true"
-    class="gap-[10px]"
+    class="gap-[10px] w-full py-[20px]"
     :is-pointer="true"
   >
     <template #header>
