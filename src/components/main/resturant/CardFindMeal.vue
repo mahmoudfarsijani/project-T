@@ -17,7 +17,7 @@
       </div>
     </template>
     <div class="body">
-      <h3 class="title">
+      <h3 class="title text-slate-900">
         {{ dataFinded.strMeal }}
       </h3>
     </div>

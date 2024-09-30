@@ -1301,11 +1301,11 @@ defineProps({
 })
 
 const iconStroke = computed(() => (isDark.value ? '#000' : '#fff'))
-const size = ref(30)
+const size = ref(24)
 
 const sizeHandler = () => {
   if (window.innerWidth < 767) {
-    size.value = 20
+    size.value = 24
   } else {
     size.value = 30
   }
@@ -1314,6 +1314,7 @@ const sizeHandler = () => {
 useEventListener(window, 'resize', sizeHandler)
 
 onMounted(() => {
+  sizeHandler()
   useEventListener(window, 'resize', sizeHandler)
 })
 
