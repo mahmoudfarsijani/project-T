@@ -1,7 +1,7 @@
 <template>
   <Container>
     <RowGrid tag="ul">
-      <CardMeal v-for="item in dataAllCat" :key="item.idCategory" :meal="item"/>
+      <CardCatMeal v-for="item in dataAllCat" :key="item.idCategory" :meal="item"/>
     </RowGrid>
   </Container>
 </template>
@@ -9,7 +9,7 @@
 <script setup>
 import { useFetchAllCat } from '@/composables/useRestAllCategories.js'
 import Container from '@/components/base/Container.vue'
-import CardMeal from '@/components/main/resturant/CardMeal.vue'
+import CardCatMeal from '@/components/main/resturant/CardCatMeal.vue'
 import RowGrid from '@/components/base/RowGrid.vue';
 
 const { dataAllCat, errorDataCat, isLoadingDataCat } = useFetchAllCat()
