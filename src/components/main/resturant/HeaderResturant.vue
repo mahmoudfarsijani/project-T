@@ -1,5 +1,5 @@
 <template>
-  <header class="w-full flex flex-nowrap py-[20px] relative top-0 items-center">
+  <header class="w-full flex flex-nowrap py-[20px] smm:fixed lg:fixed top-0 items-cente transition-all duration-700" :class="{'bg-sky-950 bg-opacity-95 ':iShowBack}">
     <Container class="flex flex-nowrap  items-center ">
       <label class="flex-1">
         <RouterLink to="/" class="text-[25px] uppercase font-Archivo text-white">
@@ -67,6 +67,10 @@ const listNav = [
 ]
 
 const showMenu = ref(null)
+const iShowBack = ref(null)
+
+
+
 const sizeHandler = () => {
   if (window.innerWidth < 1120) {
     showMenu.value = false
@@ -75,16 +79,35 @@ const sizeHandler = () => {
   }
 }
 
+const backgroundHandler = () => {
+  if(document.documentElement.scrollTop > 5) {
+    iShowBack.value = true
+  } else {
+    iShowBack.value = false
+  }
+}
+
 useEventListener(window,'resize',sizeHandler)
+useEventListener(window,'scroll',backgroundHandler)
 
 onMounted(() => {
   sizeHandler()
   useEventListener(window,'resize',sizeHandler)
 })
 
+onMounted(() => {
+  backgroundHandler()
+  useEventListener(window,'scroll',backgroundHandler)
+})
+
 onUnmounted(() => {
   useEventListener(window,'resize',sizeHandler)
   delete   useEventListener(window,'resize',sizeHandler)
+})
+
+onUnmounted(() => {
+  useEventListener(window,'scroll',backgroundHandler)
+  delete useEventListener(window,'scroll',backgroundHandler)
 })
 
 const isShow = ref(false)
