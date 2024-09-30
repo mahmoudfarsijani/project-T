@@ -1,5 +1,5 @@
 <template>
-  <Main class="h-screen mains">
+  <Main class="min-h-screen mains py-[50px]">
     <RouterView />
   </Main>
 </template>

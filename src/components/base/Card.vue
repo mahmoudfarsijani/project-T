@@ -46,7 +46,7 @@ const elementClass = computed(() => ({
 }
 
 .cart--col {
-  @apply flex-col;
+  @apply flex-col items-center;
 }
 
 .cart--row {
