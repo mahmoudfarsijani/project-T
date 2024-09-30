@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 import axios from 'axios'
 
-export const fetchEachCat = (catName) => {
+export const useFetchEachCat = (catName) => {
   const dataEachCat = ref([])
   const isLoadingEachCat = ref(false)
   const errorEachCat = ref(null)
@@ -9,8 +9,8 @@ export const fetchEachCat = (catName) => {
   const fetchData = async () => {
     isLoadingEachCat.value = true
     try {
-      const response = await axios.get(`www.themealdb.com/api/json/v1/1/filter.php?c=${catName}`)
-      dataEachCat.value = response.data
+      const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${catName}`)
+      dataEachCat.value = response.data.meals
     } catch (error) {
       errorEachCat.value = error.message
     } finally {

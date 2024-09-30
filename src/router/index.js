@@ -143,6 +143,11 @@ const router = createRouter({
           path:'/resturant/detailmeal/:id',
           name:'detail-meal',
           component: () => import('@/views/resturant/child/DetailMeals.vue')
+        },
+        {
+          path:'/resturant/category-meal/:name',
+          name:'category-meal',
+          component: () => import('@/views/resturant/child/EachCategory.vue')
         }
       ]
     },
