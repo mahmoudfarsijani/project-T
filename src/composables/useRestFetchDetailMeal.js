@@ -20,7 +20,7 @@ export const useFetchDetail = (mealId) => {
         const ingredient = dataDetailMeal.value[`strIngredient${i}`]
         const measure = dataDetailMeal.value[`strMeasure${i}`]
         if (ingredient && ingredient.trim()) {
-          ingredientList.push(`${ingredient} - ${measure}`)
+          ingredientList.push(`${ingredient} : ${measure}`)
         }
       }
       ingredients.value = ingredientList
