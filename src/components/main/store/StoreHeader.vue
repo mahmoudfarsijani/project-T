@@ -14,7 +14,6 @@
         </div>
         <div v-if="!isMobile" class="box-search">
           <InputBox
-            icons="search"
             :is-absolute="true"
             :is-bigged="false"
             :is-rounded="true"
