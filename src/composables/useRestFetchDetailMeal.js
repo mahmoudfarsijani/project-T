@@ -12,7 +12,7 @@ export const useFetchDetail = (mealId) => {
       const response = await axios.get(
         `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`
       )
-      dataDetailMeal.value = await response.data.meals
+      dataDetailMeal.value = await response.data.meals[0]
     } catch (error) {
       errorDetailMeal.value = error.message
     } finally {
