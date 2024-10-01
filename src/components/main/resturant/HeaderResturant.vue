@@ -29,7 +29,7 @@
             </Button>
             <div
               v-show="isDropDown"
-              class="dropdown w-[150px] absolute flex flex-col gap-[10px] bg-cyan-900 bg-opacity-55 right-0 top-[60px] rounded-md overflow-hidden duration-700 transition-all p-[10px]"
+              class="dropdown w-[150px] absolute flex flex-col gap-[10px] from-cyan-950   to-cyan-950  bg-gradient-to-b right-0 top-[60px] rounded-md overflow-hidden duration-700 transition-all p-[10px]"
             >
               <li v-for="item in routePages" :key="item.id">
                 <RouterLink
