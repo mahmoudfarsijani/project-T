@@ -7,7 +7,7 @@
       <label class="flex-1">
         <RouterLink
           to="/"
-          class="text-[25px] uppercase font-Archivo bg-transparent"
+          class="text-[25px] uppercase font-Archivo text-white bg-transparent"
 
         >
           koppee

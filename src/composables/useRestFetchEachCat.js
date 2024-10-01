@@ -7,7 +7,8 @@ export const useFetchEachCat = (
   c = '',
   a = '',
   catName = '',
-  list = ''
+  list = '',
+  country=''
 ) => {
   const dataEachCat = ref([])
   const isLoadingEachCat = ref(false)
@@ -17,7 +18,7 @@ export const useFetchEachCat = (
     isLoadingEachCat.value = true
     try {
       const response = await axios.get(
-        `https://www.themealdb.com/api/json/v1/1/${filter || lists}.php?${c || a}=${catName || list}`
+        `https://www.themealdb.com/api/json/v1/1/${filter || lists}.php?${c || a}=${catName || list || country}`
       )
       console.log(response)
       dataEachCat.value = response.data.meals
