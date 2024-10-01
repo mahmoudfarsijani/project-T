@@ -1,6 +1,12 @@
 <template>
-  <Container >
-    <InfoDetailMeals :detail="dataDetailMeal" />
+  <Container class="pt-[50px]">
+    <div v-if="isLoadingDetailMeal" class="flex justify-center pt-[100px]" >
+        <span class="loading loading-ring loading-lg"></span>
+      </div>
+      <div v-else-if="errorDetailMeal">
+          {{ errorDetailMeal }}
+      </div>
+    <InfoDetailMeals v-else :detail="dataDetailMeal" />
   </Container>
 </template>
 
