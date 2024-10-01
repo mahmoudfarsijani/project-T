@@ -54,7 +54,25 @@
                 {{ item.label }}
               </RouterLink>
             </li>
-            <li class="list-item">pages</li>
+            <li class="list-item relative  mt-[-10px]" ref="dropdownCont">
+              <Button :is-icon-only="false" icon="arrow-right" @click.prevent="showDropDown">
+                Pages
+              </Button>
+              <div
+                v-show="isDropDown"
+                class="dropdown w-[150px] absolute flex flex-col items-center gap-[10px]   right-[-120px] top-[0px] rounded-md overflow-hidden duration-700 transition-all p-[10px]"
+              >
+                <li v-for="item in routePages" :key="item.id">
+                  <RouterLink
+                    :to="`${item.route}`"
+                    class="capitalize"
+                    @click="isShow = !isShow"
+                  >
+                    {{ item.label }}
+                  </RouterLink>
+                </li>
+              </div>
+            </li>
           </Row>
           <Button
             tag="button"
