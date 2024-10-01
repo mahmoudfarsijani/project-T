@@ -1,7 +1,14 @@
 import { ref } from 'vue'
 import axios from 'axios'
 
-export const useFetchEachCat = (catName) => {
+export const useFetchEachCat = (
+  filter = '',
+  lists = '',
+  c = '',
+  a = '',
+  catName = '',
+  list = ''
+) => {
   const dataEachCat = ref([])
   const isLoadingEachCat = ref(false)
   const errorEachCat = ref(null)
@@ -9,7 +16,10 @@ export const useFetchEachCat = (catName) => {
   const fetchData = async () => {
     isLoadingEachCat.value = true
     try {
-      const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${catName}`)
+      const response = await axios.get(
+        `https://www.themealdb.com/api/json/v1/1/${filter || lists}.php?${c || a}=${catName || list}`
+      )
+      console.log(response)
       dataEachCat.value = response.data.meals
     } catch (error) {
       errorEachCat.value = error.message
@@ -19,7 +29,6 @@ export const useFetchEachCat = (catName) => {
   }
 
   fetchData()
-
 
   return {
     dataEachCat,

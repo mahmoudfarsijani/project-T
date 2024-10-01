@@ -26,7 +26,7 @@
   
   
   const route = useRoute()
-  const { dataEachCat, isLoadingEachCat, errorEachCat } = useFetchEachCat(route.params.name)
+  const { dataEachCat, isLoadingEachCat, errorEachCat } = useFetchEachCat('filter',null,'c',null,route.params.name)
   </script>
   
   
