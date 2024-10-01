@@ -6,7 +6,7 @@
       <div v-else-if="errorDetailMeal">
           {{ errorDetailMeal }}
       </div>
-    <InfoDetailMeals v-else :detail="dataDetailMeal" />
+    <InfoDetailMeals v-else :detail="dataDetailMeal" :ingredient="ingredients" />
   </Container>
 </template>
 
@@ -22,5 +22,5 @@ const mealId = computed(() => {
   return route.params.id
 })
 
-const { dataDetailMeal, isLoadingDetailMeal, errorDetailMeal } = useFetchDetail(mealId.value)
+const { dataDetailMeal, isLoadingDetailMeal, errorDetailMeal,ingredients } = useFetchDetail(mealId.value)
 </script>

@@ -15,17 +15,34 @@
       </p>
 
       <div class="flex flex-col gap-[5px]">
-        <span class="capitalize font-light text-white"> category: {{ detail.strCategory }} </span>
-        <span class="capitalize font-light text-white"> area: {{ detail.strArea }} </span>
+        <span class="capitalize font-light text-white"
+          ><span class="capitalize font-bold text-white">category:</span> {{ detail.strCategory }}
+        </span>
+        <span class="capitalize font-light text-white">
+          <span class="capitalize font-bold text-white">area:</span> {{ detail.strArea }}
+        </span>
         <span v-if="detail.strDrinkAlternate" class="capitalize font-light text-white">
-          drink: {{ detail.strDrinkAlternate }}
+          <span class="capitalize font-bold text-whitedrink:"></span> {{ detail.strDrinkAlternate }}
         </span>
         <span v-if="detail.strSource" class="capitalize font-light text-white">
-          source recepies: <a :href="`${detail.strSource}`">click</a>
+          <span class="capitalize font-bold text-white">source recepies:</span>
+          <a :href="`${detail.strSource}`">click</a>
         </span>
         <span v-if="detail.strYoutube" class="capitalize font-light text-white">
-          source youtube: <a :href="`${detail.strYoutube}`">click</a>
+          <span class="capitalize font-bold text-white"> source youtube:</span>
+          <a :href="`${detail.strYoutube}`">click</a>
         </span>
+        <div v-if="ingredient">
+          <span class="flex flex-col capitalize font-bold text-white">
+            ingredients:
+            <span
+              v-for="(item, index) in ingredient"
+              :key="index"
+              class="capitalize font-light text-white"
+              >{{ item }}</span
+            >
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -33,7 +50,7 @@
 
 <script setup>
 import { defineProps, ref, computed } from 'vue'
-import { string, number, shape, object } from 'vue-types'
+import { string, number, shape, object, array } from 'vue-types'
 import { slice } from 'lodash'
 import Img from '@/components/base/Img.vue'
 
@@ -49,7 +66,8 @@ const props = defineProps({
     strTags: string(),
     strYoutube: string(),
     strSource: string()
-  })
+  }),
+  ingredient: array()
 })
 
 const isMore = ref(false)
