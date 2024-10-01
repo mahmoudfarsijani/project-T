@@ -115,16 +115,6 @@ const router = createRouter({
           component: () => import('@/views/resturant/child/ContactRest.vue')
         },
         {
-          path:'/resturant/menu',
-          name:'menu-rest',
-          component: () => import('@/views/resturant/child/MenuRest.vue')
-        },
-        {
-          path:'/resturant/pages',
-          name:'pages-rest',
-          component: () => import('@/views/resturant/child/PagesRest.vue')
-        },
-        {
           path:'/resturant/categories',
           name:'categories-rest',
           component: () => import('@/views/resturant/child/pages/CategoriesRest.vue')

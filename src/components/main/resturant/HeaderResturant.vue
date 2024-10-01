@@ -5,11 +5,7 @@
   >
     <Container class="flex flex-nowrap items-center">
       <label class="flex-1">
-        <RouterLink
-          to="/"
-          class="text-[25px] uppercase font-Archivo text-white bg-transparent"
-
-        >
+        <RouterLink to="/" class="text-[25px] uppercase font-Archivo text-white bg-transparent">
           koppee
         </RouterLink>
       </label>
@@ -21,11 +17,30 @@
         @click="showHandler"
       />
       <nav>
-        <Row tag="ul" v-if="showMenu" class="gap-[15px]">
+        <Row tag="ul" v-if="showMenu" class="gap-[15px] items-center">
           <li v-for="item in listNav" :key="item.id">
             <RouterLink :to="{ name: item.name }" class="list-item">
               {{ item.label }}
             </RouterLink>
+          </li>
+          <li class="list-item relative" ref="dropdownCont">
+            <Button :is-icon-only="false" icon="arrow-bottom" @click.prevent="showDropDown">
+              Pages
+            </Button>
+            <div
+              v-show="isDropDown"
+              class="dropdown w-[150px] absolute flex flex-col gap-[10px] bg-cyan-900 bg-opacity-55 right-0 top-[60px] rounded-md overflow-hidden duration-700 transition-all p-[10px]"
+            >
+              <li v-for="item in routePages" :key="item.id">
+                <RouterLink
+                  :to="`${item.route}`"
+                  class="capitalize"
+                  @click="isDropDown = !isDropDown"
+                >
+                  {{ item.label }}
+                </RouterLink>
+              </li>
+            </div>
           </li>
         </Row>
         <div
@@ -39,6 +54,7 @@
                 {{ item.label }}
               </RouterLink>
             </li>
+            <li class="list-item">pages</li>
           </Row>
           <Button
             tag="button"
@@ -77,15 +93,23 @@ const listNav = [
     label: 'contact',
     name: 'contact-rest',
     id: nanoid(3)
-  },
+  }
+]
+
+const routePages = [
   {
-    label: 'menu',
-    name: 'menu-rest',
+    label: 'categories',
+    route: '/resturant/categories',
     id: nanoid(3)
   },
   {
-    label: 'pages',
-    name: 'pages-rest',
+    label: 'search',
+    route: '/resturant/search',
+    id: nanoid(3)
+  },
+  {
+    label: 'country',
+    route: '/resturant/country',
     id: nanoid(3)
   }
 ]
@@ -136,6 +160,27 @@ const isShow = ref(false)
 const showHandler = () => {
   isShow.value = !isShow.value
 }
+
+const isDropDown = ref(false)
+const dropdownCont = ref(null)
+const showDropDown = () => {
+  isDropDown.value = !isDropDown.value
+}
+
+const HandleOutSide = (event) => {
+  if (dropdownCont.value && !dropdownCont.value.contains(event.target)) {
+    isDropDown.value = false
+  }
+}
+
+onMounted(() => {
+  useEventListener(document, 'click', HandleOutSide)
+})
+
+onUnmounted(() => {
+  useEventListener(document, 'click', HandleOutSide)
+  delete useEventListener(document, 'click', HandleOutSide)
+})
 </script>
 
 <style scoped>
