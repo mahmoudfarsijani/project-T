@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="detail"
-    class="w-full flex smm:flex-wrap lg:flex-nowrap items-center gap-[30px] smm:justify-center lg:justify-start"
+    class="w-full flex smm:flex-wrap lg:flex-nowrap gap-[30px] smm:justify-center lg:justify-start"
   >
     <div class="smm:w-[250px] smm:h-[250px] lg:w-[350px] lg:h-[350px] rounded-full overflow-hidden">
       <Img :src="detail.strMealThumb" :alt="detail.strMeal" class="w-full h-full object-cover" />
@@ -11,8 +11,9 @@
         {{ detail.strMeal }}
       </h1>
       <p class="subtitle font-sans text-[14px] text-justify text-white">
-        {{ detail.strInstructions }}
+        {{ sliceDescription }} <span v-if="!isMore" @click="showMore">...</span>
       </p>
+
       <div class="flex flex-col gap-[5px]">
         <span class="capitalize font-light text-white"> category: {{ detail.strCategory }} </span>
         <span class="capitalize font-light text-white"> area: {{ detail.strArea }} </span>
@@ -33,6 +34,7 @@
 <script setup>
 import { defineProps, ref, computed } from 'vue'
 import { string, number, shape, object } from 'vue-types'
+import { slice } from 'lodash'
 import Img from '@/components/base/Img.vue'
 
 const props = defineProps({
@@ -48,5 +50,17 @@ const props = defineProps({
     strYoutube: string(),
     strSource: string()
   })
+})
+
+const isMore = ref(false)
+const showMore = () => {
+  isMore.value = !isMore.value
+}
+
+const sliceDescription = computed(() => {
+  if (props.detail.strInstructions && !isMore.value) {
+    return props.detail?.strInstructions.slice(0, 500)
+  }
+  return props.detail?.strInstructions
 })
 </script>
