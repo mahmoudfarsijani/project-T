@@ -1,12 +1,12 @@
 <template>
-    <Card v-if="movies" tag="RouterLink" :to="`/movie-detail/${movies.id}`" class="w-full justify-between items-center" :is-row="true" :is-pointer="true" >
+    <Card v-if="movies" tag="RouterLink" :to="`/movie-detail/${movies.id}`" class="w-full h-[80px]  justify-start items-center gap-[20px] py-[27px]" :is-row="true" :is-pointer="true" >
         <template #header>
             <div class="w-[50px] h-[50px] overflow-hidden rounded-full">
                 <Img :src="srcImg" :alt="movies.original_title" class="w-full"/>
             </div>
         </template>
         <div class="body">
-            <h2 class="title">
+            <h2 class="title text-slate-700">
                 {{ movies.original_title }}
             </h2>
         </div>

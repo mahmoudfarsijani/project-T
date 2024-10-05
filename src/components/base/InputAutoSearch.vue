@@ -1,5 +1,5 @@
 <template>
-  <input :type="type" :placeholder="placeholder" v-model="localValue" @input="searching" :class="['input',isFull? 'w-full' : 'w-[500px]']" class="bg-gray-200"/>
+  <input :type="type" :placeholder="placeholder" v-model="localValue" @input="searching" :class="['input',isFull? 'w-full' : 'w-[500px]']" class="bg-gray-200 text-slate-700"/>
 </template>
 
 <script setup>
@@ -21,6 +21,6 @@ const searching = () => {
 
 <style scoped>
     .input {
-        @apply px-[10px] py-[8px]
+        @apply smm:py-[4px] md:py-[6px] px-[10px] lg:py-[8px]
     }
 </style>
