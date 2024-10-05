@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 import axios from 'axios'
 
-export const useFetchDetailMovie = (value) => {
+export const useFetchDetailMovie = (value,otherValue='') => {
   const dataDetailMovie = ref({})
   const isLoadingDetailMovie = ref(false)
   const errorDetailMovie = ref(null)
@@ -18,7 +18,8 @@ export const useFetchDetailMovie = (value) => {
     isLoadingDetailMovie.value = true
     try {
       const response = await axios.get(
-        `https://api.themoviedb.org/3/movie/${value}?language=en-US`,
+        `https://api.themoviedb.org/3/movie/${value}${otherValue ? `/${otherValue}` : ''}?language=en-US`,
+        
         options
       )
       dataDetailMovie.value = response.data

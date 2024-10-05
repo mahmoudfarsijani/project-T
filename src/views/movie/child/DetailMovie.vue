@@ -1,7 +1,7 @@
 <template>
   <Main>
     <div
-      class=" min-h-screen bg-no-repeat bg-center"
+      class="min-h-screen bg-no-repeat bg-center"
       :style="{
         backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.4)) ,url('${srcImg}')`,
         backgroundRepeat: 'norepeat',
@@ -10,9 +10,14 @@
         width: '100%'
       }"
     >
-      <Container class="text-white ">
-        detail movie
-        <SecOneDetailMovie :detail="dataDetailMovie" />
+      <Container class="text-white">
+        <div v-if="isLoadingDetailMovie">
+          <span class="loading loading-ring loading-lg"></span>
+        </div>
+        <div v-else-if="errorDetailMovie">
+          {{ errorDetailMovie }}
+        </div>
+        <SecOneDetailMovie v-else :detail="dataDetailMovie" />
       </Container>
     </div>
   </Main>
