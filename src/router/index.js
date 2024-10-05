@@ -86,62 +86,62 @@ const router = createRouter({
       path: '/resturant',
       name: 'resturant',
       alias: '/resturants',
-      redirect:'/resturant/home',
+      redirect: '/resturant/home',
       components: {
-        default:  () => import('@/views/resturant/Resturant.vue'),
-        headerResturant: () => import('@/components/main/resturant/HeaderResturant.vue'),
+        default: () => import('@/views/resturant/Resturant.vue'),
+        headerResturant: () => import('@/components/main/resturant/HeaderResturant.vue')
       },
       meta: { title: 'Resturant', requiresAuth: false },
       children: [
         // default
         {
-          path:'',
-          name:'home-rest',
-          component:() => import('@/views/resturant/child/HomeRest.vue')
-        },
-        {
-          path:'/resturant/home',
-          name:'home-rest',
+          path: '',
+          name: 'home-rest',
           component: () => import('@/views/resturant/child/HomeRest.vue')
         },
         {
-          path:'/resturant/about',
-          name:'about-rest',
+          path: '/resturant/home',
+          name: 'home-rest',
+          component: () => import('@/views/resturant/child/HomeRest.vue')
+        },
+        {
+          path: '/resturant/about',
+          name: 'about-rest',
           component: () => import('@/views/resturant/child/AboutRest.vue')
         },
         {
-          path:'/resturant/contact',
-          name:'contact-rest',
+          path: '/resturant/contact',
+          name: 'contact-rest',
           component: () => import('@/views/resturant/child/ContactRest.vue')
         },
         {
-          path:'/resturant/categories',
-          name:'categories-rest',
+          path: '/resturant/categories',
+          name: 'categories-rest',
           component: () => import('@/views/resturant/child/pages/CategoriesRest.vue')
         },
         {
-          path:'/resturant/country',
-          name:'country-rest',
+          path: '/resturant/country',
+          name: 'country-rest',
           component: () => import('@/views/resturant/child/pages/CountryRest.vue')
         },
         {
-          path:'/resturant/search',
-          name:'categories-rest',
+          path: '/resturant/search',
+          name: 'categories-rest',
           component: () => import('@/views/resturant/child/pages/SearchBoxRest.vue')
         },
         {
-          path:'/resturant/detailmeal/:id',
-          name:'detail-meal',
+          path: '/resturant/detailmeal/:id',
+          name: 'detail-meal',
           component: () => import('@/views/resturant/child/DetailMeals.vue')
         },
         {
-          path:'/resturant/category-meal/:name',
-          name:'category-meal',
+          path: '/resturant/category-meal/:name',
+          name: 'category-meal',
           component: () => import('@/views/resturant/child/EachCategory.vue')
         },
         {
-          path:'/resturant/country-meal/:name',
-          name:'country-meals',
+          path: '/resturant/country-meal/:name',
+          name: 'country-meals',
           component: () => import('@/views/resturant/child/CountryMeals.vue')
         }
       ]
@@ -152,6 +152,12 @@ const router = createRouter({
       alias: '/movies',
       component: () => import('@/views/movie/Movie.vue'),
       meta: { title: 'Movie', requiresAuth: false }
+    },
+    {
+      name: 'detail-movie',
+      path: '/detail-movie/:id',
+      component: () => import('@/views/movie/child/DetailMovie.vue'),
+      meta: { title: 'detail-movie', requiresAuth: false }
     },
     {
       name: '404',
