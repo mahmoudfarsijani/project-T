@@ -9,7 +9,7 @@
               </div>
           </div> -->
     <div class="smm:w-[100%] lg:w-[70%] flex flex-col items-start gap-[10px]">
-      <h1 class="title smm:text-[37px] md:text-[37px] lg:text-[49px] font-kanit">
+      <h1 class="title smm:text-[37px] md:text-[47px] lg:text-[59px] font-kanit">
         {{ detail.title }}
       </h1>
       <div class="flex items-center gap-[15px]">
@@ -28,7 +28,7 @@
           {{ details.dataTime }}
         </span>
       </div>
-      <p class="subtitle smm:text-[15px] md:text-[17px] lg:text-[17px] font-Archivo">
+      <p class="subtitle smm:text-[13px] md:text-[17px] lg:text-[17px] font-Archivo text-justify">
         {{ detail.overview }}
       </p>
       <div v-if="isLoadingDetailMovie">
@@ -46,6 +46,18 @@
           <span class="font-light">
             {{ details.dataGenres }}
           </span>
+        </li>
+        <li class="smm:text-[12px] md:text-[16px] whitespace-nowrap">
+          <span class="mr-2 capitalize font-kanit font-bold text-teal-400"> componies: </span>
+          <span class="font-light">
+            {{ details.dataComponies }}
+          </span>
+        </li>
+        <li class="smm:text-[12px] md:text-[16px] whitespace-nowrap">
+          <span class="mr-2 capitalize font-kanit font-bold text-teal-400"> home page: </span>
+          <a :href="linkPages" target="_blank" rel="noopener noreferrer" class="font-light">
+           {{ detail.title }} 
+          </a>
         </li>
       </Row>
     </div>
@@ -104,11 +116,14 @@ const countRange = computed(() => {
     return Math.floor(props.detail.vote_average).toFixed(1)
   }
 })
+const dataHome = ref('')
 
 const details = computed(() => {
   const dataGenres = ref('')
   const dataCredits = ref([])
   const dataTime = ref('')
+  const dataComponies = ref([])
+
 
   // time
   const hours = Math.floor(props.detail?.runtime / 60)
@@ -129,10 +144,37 @@ const details = computed(() => {
     dataCredits.value = dataMaped
   }
 
+  // componies 
+  if(props.detail?.production_companies){
+    dataComponies.value = props.detail?.production_companies.map(item => {
+      return item.name
+    }).join(' ,')
+  }
+
+ 
+
   return {
     dataGenres,
     dataCredits,
-    dataTime
+    dataTime,
+    dataComponies,
   }
 })
+
+// link pages
+const linkPages = computed(() => {
+   // dataHome 
+   if(props.detail?.homepage){
+    dataHome.value = props.detail?.homepage
+  }
+  return dataHome.value
+})
+
+// const logoCom = computed(() => {
+//   const logo = ref(null)
+//   if(props.detail?.production_companies){
+//     logo.value =  props.detail?.production_companies.map(item => item.logo_path)
+//   }
+//   return `https://image.tmdb.org/t/p/w500/${logo.value}`
+// })
 </script>
