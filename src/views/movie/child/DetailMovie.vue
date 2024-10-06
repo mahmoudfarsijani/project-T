@@ -10,7 +10,7 @@
         width: '100%'
       }"
     >
-      <Container class="text-white">
+
         <div v-if="isLoadingDetailMovie">
           <span class="loading loading-ring loading-lg"></span>
         </div>
@@ -18,7 +18,7 @@
           {{ errorDetailMovie }}
         </div>
         <SecOneDetailMovie v-else :detail="dataDetailMovie" />
-      </Container>
+        {{}}
     </div>
   </Main>
 </template>
@@ -38,8 +38,8 @@ const { dataDetailMovie, isLoadingDetailMovie, errorDetailMovie } = useFetchDeta
 )
 
 const srcImg = computed(() => {
-  if (dataDetailMovie.value.poster_path) {
-    return `https://image.tmdb.org/t/p/w500/${dataDetailMovie.value?.poster_path}`
+  if (dataDetailMovie.value.backdrop_path) {
+    return `https://image.tmdb.org/t/p/w500/${dataDetailMovie.value?.backdrop_path}`
   }
 })
 console.log(srcImg)
