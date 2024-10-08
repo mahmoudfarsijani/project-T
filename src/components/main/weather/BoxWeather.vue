@@ -2,7 +2,15 @@
   <div class="flex  justify-center h-screen items-center gap-[50px]">
     <div class="w-full h-[350px] flex flex-col gap-[35px]  items-center ">
       <SearchCity @update:input-value="findName" />
-      <CardInfoWeather :details="dataWeather" />
+      <div v-if="isLoadingWeather">
+        <!-- loading -->
+        <span class="loading loading-ring loading-lg"></span>
+      </div>
+      <div v-else-if="errorWeather">
+        <!-- error -->
+        {{ errorWeather }}
+      </div>
+      <CardInfoWeather v-else="dataWeather" :details="dataWeather" />
     </div>
   </div>
 </template>
