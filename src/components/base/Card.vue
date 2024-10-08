@@ -30,13 +30,15 @@ const props = defineProps({
   isRouter: bool().def(false),
   isWhite: bool().def(false),
   isDark: bool().def(false),
-  isPointer:bool().def(false)
+  isPointer:bool().def(false),
+  isWeather: bool().def(false),
 })
 
 const elementClass = computed(() => ({
   'cart--white': props.isWhite,
   'cart--dark': props.isDark,
-  'cart--pointer': props.isPointer
+  'cart--pointer': props.isPointer,
+  'card-weather': props.isWeather
 }))
 </script>
 
@@ -80,4 +82,7 @@ const elementClass = computed(() => ({
 .cart--pointer {
   @apply cursor-pointer
 }
+.card-weather {
+        @apply w-[35%] min-w-[300px] bg-gray-700 bg-opacity-50 rounded-md py-[20px] shadow-lg items-start px-[10px] gap-[15px]
+    }
 </style>
