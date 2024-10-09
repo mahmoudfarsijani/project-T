@@ -167,7 +167,7 @@ const router = createRouter({
     },
     {
       name:'sign-up',
-      path:'signup',
+      path:'/signup',
       component: () => import('@/views/auth/child/SignUp.vue'),
       meta: {title:'sign up',requiresAuth:false},
     },
@@ -176,7 +176,7 @@ const router = createRouter({
       path:'/dashboard/:name',
       component:() => import('@/views/auth/child/Dashboard.vue'),
       meta: {title:'dashboard',requiresAuth:false}
-    }
+    },
     {
       name: '404',
       path: '/:pathMatch(.*)*',
