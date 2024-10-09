@@ -160,6 +160,24 @@ const router = createRouter({
       meta: { title: 'detail-movie', requiresAuth: false }
     },
     {
+      name: 'login',
+      path: '/login',
+      component: () => import('@/views/auth/child/Login.vue'),
+      meta: { title: 'login', requiresAuth: false }
+    },
+    {
+      name:'sign-up',
+      path:'signup',
+      component: () => import('@/views/auth/child/SignUp.vue'),
+      meta: {title:'sign up',requiresAuth:false},
+    },
+    {
+      name:'dashboard',
+      path:'/dashboard/:name',
+      component:() => import('@/views/auth/child/Dashboard.vue'),
+      meta: {title:'dashboard',requiresAuth:false}
+    }
+    {
       name: '404',
       path: '/:pathMatch(.*)*',
       component: () => import('@/views/404.vue')
