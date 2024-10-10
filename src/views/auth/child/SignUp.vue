@@ -1,5 +1,10 @@
 <template>
     <div>
-        sign up
+        <BoxSignUp/>
     </div>
 </template>
+
+
+<script setup>
+    import BoxSignUp from '@/components/main/auth/BoxSignUp.vue'
+</script>

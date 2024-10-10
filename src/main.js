@@ -10,6 +10,7 @@ import Pinia from './store'
 import VLazyImage from 'v-lazy-image'
 import vuetify from './plugins/vuetify'
 import ToastPlugin from 'vue-toast-notification';
+import { Form,ErrorMessage,Field } from 'vee-validate'
 // Import one of the available themes
 // import 'vue-toast-notification/dist/theme-default.css';
 import 'vue-toast-notification/dist/theme-sugar.css';
@@ -44,5 +45,8 @@ app.use(router)
 app.use(Pinia)
 app.use(vuetifyy)
 app.use(ToastPlugin)
+app.component('Form',Form)
+app.component('Field',Field)
+app.component('ErrorMessage',ErrorMessage)
 app.component('v-lazy-image', VLazyImage)
 app.mount('#app')
