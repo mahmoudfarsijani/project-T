@@ -43,22 +43,33 @@
 </template>
 
 <script setup>
-import { ref,defineEmits } from 'vue'
+import { ref, defineEmits } from 'vue'
 import { Field, Form, ErrorMessage } from 'vee-validate'
+import { useRouter } from 'vue-router'
 import * as Yup from 'yup'
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 
 const email = ref('')
 const password = ref('')
 const isRemember = ref(false)
 const emits = defineEmits(['update:select-value'])
+const router = useRouter()
+const auth = getAuth()
 const schemaForm = Yup.object({
   email: Yup.string().email().required(),
   password: Yup.string().min(8).required()
 })
 
-const formHandler = () => {
-    if(password.value && email.value){
-        emits('update:select-value',isRemember.value,email.value)
+const formHandler = async () => {
+  try {
+    await signInWithEmailAndPassword(auth, email.value, password.value)
+
+    if (password.value && email.value) {
+      emits('update:select-value', isRemember.value, email.value)
     }
+    router.push({ name: 'dashboard' })
+  } catch (error) {
+    console.log(error)
+  }
 }
 </script>
