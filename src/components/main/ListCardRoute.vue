@@ -9,12 +9,12 @@
       <SwiperSlide v-for="item in dataCards" :key="item.id" class="swiper--slide">
         <Card tag="li" class="cart--li">
           <template #header>
-            <h2 class="title">
+            <h2 class="title select-none">
               {{ item.name }}
             </h2>
           </template>
           <div class="body">
-            <p class="subtitle">
+            <p class="subtitle select-none">
               {{ item.title }}
             </p>
           </div>
@@ -24,7 +24,7 @@
               :to="{ name: `${item.router}` }"
               :is-icon-only="false"
               icon="arrow-right"
-              class="btn--li"
+              class="btn--li select-none"
               :class="{ 'btn--li-mobile': isMobile }"
             >
               go to page
