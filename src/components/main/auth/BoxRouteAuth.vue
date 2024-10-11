@@ -1,10 +1,119 @@
 <template>
-    <div class="text-red-500">
-        <RouterLink to="/login" class="btn-link text-sky-700">
-            login
-        </RouterLink>
-        <RouterLink to="/signup" class="btn-link text-sky-700">
-            sign up
-        </RouterLink>
-    </div>
-</template>
+    <Row tag="ul" :is-no-wrap="true" class="w-full py-[50px]">
+      <swiper
+        :slides-per-view="isMobile ? 1 : 3"
+        :space-between="5"
+        loop="true"
+        @slideChange="onSlideChange"  
+      >
+        <SwiperSlide v-for="item in dataRoute" :key="item.id" class="swiper--slide">
+          <Card tag="li" class="cart--li">
+            <template #header>
+              <h2 class="title">
+                {{ item.label }}
+              </h2>
+            </template>
+            <template #footer>
+              <Button
+                tag="RouterLink"
+                :to="`${item.route}` "
+                :is-icon-only="false"
+                icon="arrow-right"
+                class="btn--li"
+                :class="{ 'btn--li-mobile': isMobile }"
+              >
+                go to page
+              </Button>
+            </template>
+          </Card>
+        </SwiperSlide>
+      </swiper>
+    </Row>
+  </template>
+
+<script setup>
+import Container from '@/components/base/Container.vue'
+import Main from '@/components/base/Main.vue'
+import {nanoid} from 'nanoid'
+import { ref, onMounted, onUnmounted } from 'vue'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { useEventListener } from '@vueuse/core'
+import 'swiper/css'
+import Row from '@/components/base/Row.vue'
+import Card from '@/components/base/Card.vue'
+import Button from '@/components/base/Button.vue'
+
+// variable
+const isMobile = ref(false)
+
+
+const dataRoute = [
+    {
+        label:'login',
+        route:'/login',
+        id:nanoid(3)
+    },
+    {
+        label:'create account',
+        route: '/signup',
+        id:nanoid(3)
+    }
+]
+
+//  custome hook directive
+const changeValue = () => {
+  isMobile.value = window.innerWidth < '800'
+}
+onMounted(() => {
+  changeValue()
+  useEventListener(window, 'resize', changeValue)
+})
+onUnmounted(() => {
+  useEventListener(window, 'resize', changeValue)
+  delete useEventListener(window, 'resize', changeValue)
+})
+</script>
+
+
+<style scoped>
+.swiper--slide {
+  @apply w-[40%] h-[380px] py-[15px]  min-w-[350px] 
+  border border-blue-700 rounded-md  
+  px-[20px]    hover:bg-blue-700  
+  overflow-hidden  hover:shadow-sm
+   hover:shadow-blue-600 dark:border-blue-400;
+}
+
+.swiper--slide:hover {
+  @apply dark:bg-blue-400;
+}
+
+.cart--li {
+  @apply h-full gap-[75px] justify-between;
+}
+
+.title {
+  @apply text-[25px] text-white uppercase font-Archivo  duration-700 dark:text-gray-900;
+}
+
+.subtitle {
+  @apply text-white dark:text-gray-900 text-[35px] lg:text-[40px] uppercase font-suns font-medium;
+}
+
+.btn--li,
+.btn--li-mobile {
+  @apply capitalize text-white dark:text-gray-900 transition-all duration-1000  w-[25%] font-suns;
+}
+
+.swiper--slide:hover .btn--li {
+  @apply scale-x-100   translate-x-[10px];
+}
+
+.swiper--slide:hover .btn--li-mobile {
+  @apply scale-x-100   translate-x-[10px];
+}
+
+.swiper--slide:hover .title {
+  @apply text-black dark:text-white;
+}
+</style>
