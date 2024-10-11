@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+import { auth, onAuthStateChanged } from '@/plugins/firebase.js'
 
 const router = createRouter({
   //  history
@@ -166,16 +167,16 @@ const router = createRouter({
       meta: { title: 'login', requiresAuth: false }
     },
     {
-      name:'sign-up',
-      path:'/signup',
+      name: 'sign-up',
+      path: '/signup',
       component: () => import('@/views/auth/child/SignUp.vue'),
-      meta: {title:'sign up',requiresAuth:false},
+      meta: { title: 'sign up', requiresAuth: false }
     },
     {
-      name:'dashboard',
-      path:'/dashboard/:name',
-      component:() => import('@/views/auth/child/Dashboard.vue'),
-      meta: {title:'dashboard',requiresAuth:false}
+      name: 'dashboard',
+      path: '/dashboard/:name',
+      component: () => import('@/views/auth/child/Dashboard.vue'),
+      meta: { title: 'dashboard', requiresAuth: true }
     },
     {
       name: '404',
@@ -198,12 +199,37 @@ const router = createRouter({
   }
 })
 
+// current user
+const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = onAuthStateChanged(
+      auth,
+      (user) => {
+        unsubscribe()
+        resolve(user)
+      },
+      reject
+    )
+  })
+}
+
 // beforeEach
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   if (to.meta.title) {
-    document.title = to.meta.title
+    document.title = await to.meta.title
   }
-  next()
+
+  const isAuth = to.matched.some((record) => record.meta.requiresAuth)
+  if (isAuth) {
+    const user = await getCurrentUser()
+    if (!user) {
+      next({ name: 'login' })
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
 })
 
 export default router

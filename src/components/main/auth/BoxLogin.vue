@@ -2,7 +2,7 @@
   <Form
     :validation-schema="schemaForm"
     @submit="formHandler"
-    class="w-[100%] max-w-[450px] gap-[50px] flex flex-col items-center bg-gray-700 bg-opacity-50 px-[20px] py-[20px]"
+    class="w-[100%] max-w-[450px] gap-[50px] flex flex-col items-center bg-gray-700 bg-opacity-50 px-[20px] py-[20px] rounded-md"
   >
     <h2 class="title text-gray-50 text-[29px] capitalize">login</h2>
     <div class="input__box flex flex-col gap-[10px] h-[60px] w-full">
@@ -39,7 +39,6 @@
     >
       submit
     </button>
-    {{ isRemember }}
   </Form>
 </template>
 

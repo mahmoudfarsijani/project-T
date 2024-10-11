@@ -3,9 +3,6 @@
     <Container class="h-screen flex justify-center items-center">
       <BoxLogin @update:select-value="selected" />
     </Container>
-    <div class="bg-red-500">
-      {{ val }}
-    </div>
   </Main>
 </template>
 

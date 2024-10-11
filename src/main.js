@@ -14,6 +14,7 @@ import { Form,ErrorMessage,Field } from 'vee-validate'
 // Import one of the available themes
 // import 'vue-toast-notification/dist/theme-default.css';
 import 'vue-toast-notification/dist/theme-sugar.css';
+import { auth, onAuthStateChanged } from "@/plugins/firebase.js";
 
 
 
