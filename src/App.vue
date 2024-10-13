@@ -5,6 +5,9 @@
     <!-- header-resturant -->
     <RouterView name="headerResturant"/>
 
+    <!-- dashboard nav -->
+    <!-- <RouterView name="dashboard"/> -->
+
 
     <RouterView :key="$route.path"/>
 

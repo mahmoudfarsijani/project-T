@@ -175,8 +175,23 @@ const router = createRouter({
     {
       name: 'dashboard',
       path: '/dashboard',
-      component: () => import('@/views/auth/child/Dashboard.vue'),
-      meta: { title: 'dashboard', requiresAuth: true }
+      components: {
+        default: () => import('@/views/auth/child/Dashboard.vue'),
+        dashboard: () => import('@/components/main/auth/DashboardNav.vue')
+      },
+      meta: { title: 'dashboard', requiresAuth: true },
+      children: [
+        {
+          name:'dashboard-home',
+          path:'/dashboard/home',
+          component: () => import('@/views/auth/child/DashboardHome.vue')
+        },
+        {
+          name:'dashboard-Info',
+          path:'/dashboard/info',
+          component: () => import('@/views/auth/child/DashboardInfo.vue')
+        }
+      ]
     },
     {
       name: '404',
