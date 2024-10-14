@@ -179,7 +179,7 @@ const router = createRouter({
         default: () => import('@/views/auth/child/Dashboard.vue'),
         dashboard: () => import('@/components/main/auth/DashboardNav.vue')
       },
-      meta: { title: 'dashboard', requiresAuth: true },
+      meta: { title: 'dashboard', requiresAuth: false },
       children: [
         {
           name:'dashboard-home',
