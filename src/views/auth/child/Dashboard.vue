@@ -1,7 +1,7 @@
 <template>
   <Main class="w-full flex flex-nowrap items-start justify-start h-screen">
     <DashboardNav />
-    <RouterView />
+    <RouterView class="text-white"/>
   </Main>
 </template>
 

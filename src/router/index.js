@@ -175,6 +175,8 @@ const router = createRouter({
     {
       name: 'dashboard',
       path: '/dashboard',
+      alias: '/dashboards',
+      redirect:'/dashboard/home',
       components: {
         default: () => import('@/views/auth/child/Dashboard.vue'),
         dashboard: () => import('@/components/main/auth/DashboardNav.vue')
@@ -182,15 +184,40 @@ const router = createRouter({
       meta: { title: 'dashboard', requiresAuth: false },
       children: [
         {
+          path:'',
+          name:'dashboard-home',
+          component: () => import('@/views/auth/child/DashboardHome.vue')
+        },
+        {
           name:'dashboard-home',
           path:'/dashboard/home',
           component: () => import('@/views/auth/child/DashboardHome.vue')
         },
         {
-          name:'dashboard-Info',
-          path:'/dashboard/info',
-          component: () => import('@/views/auth/child/DashboardInfo.vue')
-        }
+          name:'dashboard-pages',
+          path:'/dashboard/pages',
+          component: () => import('@/views/auth/child/DashboardPages.vue')
+        },
+        {
+          name:'dashboard-chat',
+          path:'/dashboard/chat',
+          component: () => import('@/views/auth/child/DashboardChat.vue')
+        },
+        {
+          name:'dashboard-task',
+          path:'/dashboard/task',
+          component: () => import('@/views/auth/child/DashboardTask.vue')
+        },
+        {
+          name:'dashboard-mail',
+          path:'/dashboard/mail',
+          component: () => import('@/views/auth/child/DashboardMail.vue')
+        },
+        {
+          name:'dashboard-auth',
+          path:'/dashboard/auth',
+          component: () => import('@/views/auth/child/DashboardAuth.vue')
+        },
       ]
     },
     {
